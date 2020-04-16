@@ -1,0 +1,12 @@
+Supervised  - labels
+Unsupervised - no labels ex.clustering , visualisation and dimensionality reduction, association rule learning
+Semisupervised - onelabel per image rest clustering like google photos
+Reinforcement - policy based state choosing,alpha go
+
+Batch learning - The system is incapable of learning incremently, all data must be supplied at once. Also called offline learning
+
+Online Learning - The system learns incremently after feeding it data continuosly or in batches, new data on the fly. The learning rate becomes important in these systems. 
+
+Instance based Learning - it learns examples by heart then using a similarity measure generlaiszes to new cases.
+Model based Learning - Build a model and then make predictions
+
