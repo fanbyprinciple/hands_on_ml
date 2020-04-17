@@ -21,3 +21,15 @@ If the data is huge then we can do online learning, maybe even implement mapredu
 The histogram after loading data
 
 ![](histo.png)
+
+
+sidenote on stratified sampling:
+    it means sampling with taking onto account the population bias
+    if there are 51.3 male and 48.7 female
+    then a stratified sample of 1000 will have 513 male and 487 female
+
+5. visualising the data to gain insights
+![](ocean.png)
+
+6. Look for correlations
+    
