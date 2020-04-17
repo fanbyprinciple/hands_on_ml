@@ -32,4 +32,11 @@ sidenote on stratified sampling:
 ![](ocean.png)
 
 6. Look for correlations
+    Corelation ranges from -1 to 1
+    close to 0 means no effect
+    when it is close to 1 it means positive corelation (directly proportional)
+    when it goes to -1 negative corelation (inversly proportional)
+
+![](cors.png)
     
+        
