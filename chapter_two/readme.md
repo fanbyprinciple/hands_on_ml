@@ -38,5 +38,50 @@ sidenote on stratified sampling:
     when it goes to -1 negative corelation (inversly proportional)
 
 ![](cors.png)
+
+7. Create attribute combinations
+
+8. Prepare data for machine learning algorithms
+
+Create functions so that you can apply it in future algorithms
+
+9. Data cleaning
+    Remove attributes
+    getting rid of rows
+    replace missing with median
+
+    Scikit learn designs principles:
+        1. consistency:
+            estimators : Any object that can estimate based on a dataset( like imputer)
+            uses fit method
+            transformers : when some estimators can transform the dataset
+            predictors: has a predictor function and score() method to evaluate the prediction
+        2. Inspection : all hyperparameters are globally accessible
+        3. Nonproliferation of classes : allare numpyor scipy arrays
+        4. Composition: existing building blocks are reused as much as possible
+        5. sensible defaults : for creating baeseline models quickly
+
+    a. Converting text and categorical attributes
+
+    b. Writing custom transformers for cleanup
     
+10. Feature scaling
+    All features must have the same range otherwise modelsdon't work properly
+
+two ways for scaling -
+
+ 1.min max scaling (normalisation) -  values are scaled and shifted so that they range from 0 to 1, done by MinMaxScaler in scikit
+
+ 2. standardisation - first it substracts mean value and devides by variance so that data has unit variance, Very less affected by outliers but range is not 0,1. Done by StandardScalar in scikit
+ 
+ 
+11. Transformation pipelines
+
+![](transform_pipeline.png)
+
+
+        
+        
+
+
         
