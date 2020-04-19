@@ -1,4 +1,4 @@
-## Knowing the task to classify
+## STEPS TO CLASSIFY
 
 multivariate regression - multiple features are taken into consideration
 univariate regression - single feature is considered
@@ -94,8 +94,11 @@ two ways for scaling -
 17. Launch , monitor and maintain your system
     - evaluation may need some human experts like Amazon Mechanical Turk or CrowdFlower
     
-18. Excercises remain
+18. Excercises remain - somewhat completed. Enough to proceed further
 
+## APPLYING ON RED WINE DATASET
+
+![](redwine.png)
 
 
         
