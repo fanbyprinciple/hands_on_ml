@@ -79,6 +79,24 @@ two ways for scaling -
 
 ![](transform_pipeline.png)
 
+12. Selecting and training models
+
+13. Better evaulation through cross validation
+
+14. Fine tuning our model
+    gridcv, randomised search and ensemble methods
+
+15. Analyse best models and their errors
+
+16. Evaluate on the test case
+    ![](final_rmse.png)
+
+17. Launch , monitor and maintain your system
+    - evaluation may need some human experts like Amazon Mechanical Turk or CrowdFlower
+    
+18. Excercises remain
+
+
 
         
         
