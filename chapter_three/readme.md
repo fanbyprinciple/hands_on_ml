@@ -29,5 +29,10 @@ Evaluating for five and not five
     if you want a child lock then you would want to have low recall
     if you want to use it for video classification then you want 99 recall
     ![](precision_recall.png)
+    There is a tradeoff between precision and recall. Which means what you want most confidence in predictions or predicting more values
+
+5. ROC curve
+Reciever operating characteristics , similar to precision and recall curve but instead it plots true positive rate (recall) with false positive rate 
+    
     
     
