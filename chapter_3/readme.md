@@ -1,5 +1,9 @@
 # MNIST CLASSIFICATION
 
+## Some lessons learnt
+1. always put the line which requires most computation in a new cell
+
+
 ## mnist data
 Every scikit learn dataset has a
 DESCR key
@@ -53,6 +57,11 @@ Scikit learn automatically detects when you try to use abinary classification al
 
 1. Make confusion matrix more comprehensible
 2. Analysing individual errors
+
+## Multilabel classification
+using KNN
+We are removing noise, works almost like regression
+![](noise_remove.png)
 
 
     
