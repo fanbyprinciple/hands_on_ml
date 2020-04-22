@@ -32,7 +32,29 @@ Evaluating for five and not five
     There is a tradeoff between precision and recall. Which means what you want most confidence in predictions or predicting more values
 
 5. ROC curve
-Reciever operating characteristics , similar to precision and recall curve but instead it plots true positive rate (recall) with false positive rate 
+Reciever operating characteristics , similar to precision and recall curve but instead it plots true positive rate (recall) with false positive rate
+
+## Multiclass classification
+
+SOme algorithms like Naive Bayes and Random forest classifiers are capable of handling multipe classes directly
+
+Others like SVM and Linear classifiers are strictly binary classifiers. Yet it canbe done.
+for ex by training 10 binary classifiers for mnist and then poll results also known as one-versus-all
+
+other is to train classifier for all pair of digits, 1 and 0 , 0 and 2, 1 and 2 =n *n-1/2, for n= 10 it means 45 classifiers. also known as one -versus-one.
+
+![](multiclass.png)
+
+Scikit learn automatically detects when you try to use abinary classification algorithm for multiclass and automatically run one-versus-all except for svmwhere it run one-versus-one
+
+
+
+## Error Analysis
+
+1. Make confusion matrix more comprehensible
+2. Analysing individual errors
+
+
     
     
     
