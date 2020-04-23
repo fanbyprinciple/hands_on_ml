@@ -67,6 +67,9 @@ We are removing noise, works almost like regression
 
 1. In my first attempt I used Random forest classifier with the score of 77.511
 
+## KNN and shift augmentation
+
+![](shift.png)
 
     
     
