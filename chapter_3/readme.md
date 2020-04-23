@@ -67,6 +67,10 @@ We are removing noise, works almost like regression
 
 1. In my first attempt I used Random forest classifier with the score of 77.511
 
+2. Using RFC I scored even less I wonder why
+76.011
+[](rfc_score.png)
+
 ## KNN and shift augmentation
 
 ![](shift.png)
