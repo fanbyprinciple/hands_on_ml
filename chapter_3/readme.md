@@ -63,6 +63,10 @@ using KNN
 We are removing noise, works almost like regression
 ![](noise_remove.png)
 
+## Titanic Submission
+
+1. In my first attempt I used Random forest classifier with the score of 77.511
+
 
     
     
