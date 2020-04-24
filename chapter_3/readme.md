@@ -81,6 +81,10 @@ Parse email:
 
 ![](parse.png)
 
+Final precision and recall:
+
+![](recall.png)
+
     
     
     
