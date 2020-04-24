@@ -75,6 +75,12 @@ We are removing noise, works almost like regression
 
 ![](shift.png)
 
+## Spam classifier
+
+Parse email:
+
+![](parse.png)
+
     
     
     
