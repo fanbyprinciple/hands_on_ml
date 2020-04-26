@@ -1,64 +1,74 @@
-Study of Maths 
+# Study of Maths 
 
-vectors in 3d space
+## Vectors in 3d space
 ![](3d.png)
 
-norm
+## Norm
 ![](norm.png)
 
-addition
+## Addition
 ![](addition.png)
 
-geometric translation
+## Geometric translation
 ![](translation.png)
 
-scalar multiplication
+## Scalar multiplication
 ![](scalarmul.png)
 
-normalisation
+## Normalisation
 ![](normalisation.png)
 
-vector projection
+## Vector projection
 ![](projection.png)
 
-matrix addition
+## Matrix addition
 ![](matrix_add.png)
 
-direct translation
+## Direct translation
 ![](matrix_translation.png)
 
-scalar multiplication
+## Scalar multiplication
 ![](m_scalar_mul.png)
 
-matrix projection
+## Matrix projection
 ![](m_plot_projection.png)
 
-matrix projection on random axis
+## Matrix projection on random axis
 ![](m_projection_randomaxis.png)
 
-matrix rotation
-nothing but projecting on an unit vector at an angle
+## Matrix rotation
+Nothing but projecting on an unit vector at an angle
 ![](m_rotation.png)
 
-matrix shear
+## Matrix shear
 ![](shear_square.png)
 
-matrix squeeze
+## Matrix squeeze
 ![](squeeze.png)
 
 ![](square_squeeze.png)
 
-matrix reflect
+## Matrix reflect
 ![](reflect.png)
 
-matrix involution
+## Matrix involution
 ![](m_involution.png)
 
-matrix inverse of shear
+## Matrix inverse of shear
 ![](inverse.png)
 
-matrix projection onto horizontal cannot be inverse
+## Matrix projection onto horizontal cannot be inverse
 ![](not_inverse.png)
 
-matrix projection onto a horizontal at an angle
+## Matrix projection onto a horizontal at an angle
 ![](project_angled.png)
+
+## Singular decomposition
+### After applying v.t dot on square
+![](sd_1.png)
+
+### After applying sigma dot on previous
+![](sd_2.png)
+
+### After applying rotation U dot equal to shear operation
+![](sd_3.png)
