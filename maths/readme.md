@@ -39,3 +39,26 @@ matrix projection on random axis
 matrix rotation
 nothing but projecting on an unit vector at an angle
 ![](m_rotation.png)
+
+matrix shear
+![](shear_square.png)
+
+matrix squeeze
+![](squeeze.png)
+
+![](square_squeeze.png)
+
+matrix reflect
+![](reflect.png)
+
+matrix involution
+![](m_involution.png)
+
+matrix inverse of shear
+![](inverse.png)
+
+matrix projection onto horizontal cannot be inverse
+![](not_inverse.png)
+
+matrix projection onto a horizontal at an angle
+![](project_angled.png)
