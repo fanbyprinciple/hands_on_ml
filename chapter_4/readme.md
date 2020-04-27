@@ -10,11 +10,11 @@ Linear regression
     
     finding parameters using normal equationfor mean square error
     
-    ![](lin_reg.png)
+   ![](lin_reg.png)
     
     Using scikitlearn default,
     
-    ![](lin_reg_1.png)
+   ![](lin_reg_1.png)
     
 Computational complexity
 
@@ -43,5 +43,9 @@ Different ways to train a linear model
     
     We need to ensure that all features have similar scale(range) using StandardScalar
     
-    Training a model in this context means a search in models parameter space, more parameter more dimesnions means more time to search
+    Training a model in this context means a search in models parameter space, more parameter more dimesnions means more time to search.
     
+Batch Gradient Descent
+
+    To implement gradient descent we need to compute teh gradient of cost function with regards to each model parameter theta. i.e. we need to calculate how much the cost function will change if we change theta a little. This is called partial derivative.
+   ![](bgd.png)
