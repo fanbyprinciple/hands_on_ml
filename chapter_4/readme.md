@@ -69,3 +69,46 @@ Mini Batch Gradient Descent
     It may be difficult to escape local minimum however mini batch is less irrelgular than SGD
 
 ![](comp_gd.png)
+
+Polynomial Regression
+
+    We can fit a linear model in non linear data. Add powers of each feature as new features and then train linear model on this extended set of features.
+   ![](polynomial.png)
+    
+    Polynomialafeatures transforms an array of n features into an array of (n+d)!/ d!n! features where n! us the factorial of n.
+    
+    For ex 100 degree polynomial
+   ![](100_degree_polynomial.png)
+    
+Learning Curves
+
+    If model performs poorly on test data but best on training data then it is severly overfitting. In order to know if  a model is learning correctly or not we can use earning cureves on training set and validation set.
+    
+   ![](learning_curve.png)
+   
+    Learning curve of degree 10
+   ![](learning_curve_degree_10.png)
+   
+    If your model is underfitting adding more training examples will not help
+
+    The key points to note in 10 degree curve
+    The errorontraining data ismuch lower
+    There is a signifiant gap which means it is overfitting, however more data would help you close the gap
+    
+Bias variance tradeoff
+
+    Models generalisaiton error can be expressed as sum of three very different errors:
+    Bias : 
+        choosing lower degreee polynomial
+        This is due to wrong asumptions, this will cause underfitting
+    
+    Variance : 
+        This is because of excessive senstivity to small variations in the training data. High degree polynomial will have more variance
+    
+    Irreducible error:
+        This is due to noisiness of the data itself. The only way to reduce this part of error is to clean up the data
+        
+    Increasing modelcomplexity will decrease bias and increase variance
+    
+    
+    
