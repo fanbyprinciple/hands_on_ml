@@ -49,3 +49,23 @@ Batch Gradient Descent
 
     To implement gradient descent we need to compute teh gradient of cost function with regards to each model parameter theta. i.e. we need to calculate how much the cost function will change if we change theta a little. This is called partial derivative.
    ![](bgd.png)
+   
+    Convergence rate is given by O(1/iterations) devide the tolerance by 10 then algorithm will have to run about 10 times more iterations.
+    
+Stochastic Gradient Descent
+
+    BGD checks for gradient at every step which makes it very slow when training set is large. Stochastic Gradient Descent just picks a random instance in the training set at every step and computes the gradient based on that single instance. 
+    Due to its stochastic (random) nature this is much less regular instead of gently decreasing , the cost function will go up and doen decreasing only on average. You will get a god result but not the optimal.
+    Since cost function will jump around a bit therefore we have to reduce learning rate so that it settles on a global minimum
+   ![](sgd.png)
+   
+    Steps are bigger in the beginning then gradually reduces this is called simulated annealing. Learning schedule is a function the takes care of learning rate in each iteration.
+
+Mini Batch Gradient Descent
+
+    In mini BAtch gradient at each step instead of computing gradients based on full training set like batch GD or only one instance like SGD mini batch gradient descent computes gradients onsmal number of batches called mini batches. The main advantage is that you can get a performance boost using matrix operations over gpu.
+   ![](mgd.png)
+    
+    It may be difficult to escape local minimum however mini batch is less irrelgular than SGD
+
+![](comp_gd.png)
