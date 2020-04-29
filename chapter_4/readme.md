@@ -110,5 +110,19 @@ Bias variance tradeoff
         
     Increasing modelcomplexity will decrease bias and increase variance
     
+Regularising Linear models
+
+    One way to avoid overfitting is to restrict the degree of freedom it has that is reduce the degree. This is achieved by contraining the weights of the model
+    
+    Ridge regression: regularised version of linear regression a term alpha * sum over n(theta square) is added to the cost function This forces the the learning algorithm to not only fit the data but also keep the modelweights as possible. This term is added to cost function only during training, The evaluation should be done with unregularised parameters.
+    
+   ![](ridge_reg.png)
+    
+    if alpha =0 then ridge regression is jst linear regression, ifalpha is very hig then result will be a flat line.
+    J(theta) =MSE(theta) + alpha * 1/2 * sum(theta^2)
+    
+    Lasso :
+   ![](lasso_reg.png)
+    
     
     
