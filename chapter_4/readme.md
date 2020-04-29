@@ -121,8 +121,26 @@ Regularising Linear models
     if alpha =0 then ridge regression is jst linear regression, ifalpha is very hig then result will be a flat line.
     J(theta) =MSE(theta) + alpha * 1/2 * sum(theta^2)
     
-    Lasso :
+    Lasso : Least absolute shrinkage ans selection operation regression uses l1 form, lasso regression tends to replace the least importnatn features.
    ![](lasso_reg.png)
     
+    Elastic net: the mddle ground betwen ridge and lasso regression. It mixes both ridge and lasso regularisation in a ratio r. when few features are required we should use lasso or elastic net otherwiese ridge is a good default
+    
+    Early stopping: one way to regularise the iterative learning lagorithm such as gradient descent is to stop training as soon as the validation error reaches a minimum. This is called early stopping. trick is to find that minimum.
+   ![](early_stopping.png)
+   
+    comparison between various regularisation models:
+   ![](reg_compare.png)
+
+Logistic Regression
+
+    Logistic regression is used for classification, it gives probability for a class, a binary classifier. it computes a wighted sum of input features plus a bias term.
+    
+    Logistic function uses something like the sigmoid function
+   ![](sigmoid.png)
+   
+    During training it uses a cost function based on log function
+    No normal equation exist however we can calcualte using partial derivatives it gives a sureshot global minimum.
+   ![](cost_log.png)
     
     
