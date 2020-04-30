@@ -142,5 +142,22 @@ Logistic Regression
     During training it uses a cost function based on log function
     No normal equation exist however we can calcualte using partial derivatives it gives a sureshot global minimum.
    ![](cost_log.png)
+   
+Decision boundaries
+    
+    Used on iris dataset for multinomial and single calssification
+    Iris virginica vs non iris-virginica
+   ![](iris_v.png)
+   
+    Two feature iris
+   ![](iris_two.png)
+    
+Softmax
+    
+    Logistic regression can be generalised to support multiple classes directly this is called softmax or multinomial logistic regression.
+    
+    given x softmax regression model computes the probability of each class by applying softmax function (also called normalised exponential)
+    Three features (multinomial)
+   ![](multinomial.png)
     
     
