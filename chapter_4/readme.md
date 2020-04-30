@@ -114,6 +114,8 @@ Regularising Linear models
 
     One way to avoid overfitting is to restrict the degree of freedom it has that is reduce the degree. This is achieved by contraining the weights of the model
     
+    The term added ensures that the parameters are minimum as possible. so there would be less variance. hence solves overfitting.
+    
     Ridge regression: regularised version of linear regression a term alpha * sum over n(theta square) is added to the cost function This forces the the learning algorithm to not only fit the data but also keep the modelweights as possible. This term is added to cost function only during training, The evaluation should be done with unregularised parameters.
     
    ![](ridge_reg.png)
@@ -156,8 +158,55 @@ Softmax
     
     Logistic regression can be generalised to support multiple classes directly this is called softmax or multinomial logistic regression.
     
+    can only be used with discrete classes for example cannot recognise individuals ina group picture
+    
+    THe solver used for softmax regression is lbfgs, it also applies l2 regularisation by default, which is controlled by hyperparameter C
+    
     given x softmax regression model computes the probability of each class by applying softmax function (also called normalised exponential)
     Three features (multinomial)
    ![](multinomial.png)
+  
+Cross entropy
+
+    Crossentropy originated from information theory. Suppose you want to efficiently transmit information about weather everyday. and there are 8 options you could encode each option using 3 bits since 2^3 = 8
+    however it is more efficient to code sunny on fits bit then sending other in 4 bits seperately if it ussually sunny. cross entropy measure the amount of bits you actually send per option. if assumption is wrong then our cross entropy will be greateer than anamount called Kullback-Leibler divergence
+    
+    the cross entropy betwenn two distributions p and q is defined as H(p,q) = - sum(p(x)log(q(x))) when distributions are discrete
+    
+
+Exercises : 
+
+    1.Linear Regression algorithm for training millions of features, stochastic gradient descent, or batch gradient descent if the features fit in memory but cannot use the normal equation then the computational requirement is too high.
+    
+    2. If features have very different scales then gradient descent will be an elongated bowl. Normal equation will work fine without scaling.
+    
+    3. Gradient descent never gets stuck on a local minimum because function is convex.
+    
+    4. No stochastic gradient descent doesn't provide an optimal solution. unless we reduce the learning rate
+    
+    5. If training error goes along with the validation error then learning rate becomes too high and algorithm starts to diverge. If training error does not go up and only validation it means that the model is overfitting. Early stopping can be used. we need to stop training.
+    
+    6. in batch and mini batch gradient models the error rises up progressively so we need to wait a bit before we stop training. The best way is to save model progressively and when validation error is consistently goingup use alast saved model.
+    
+    7. Stochastic gradient descent will reach its destination the fastest. However the actual convergence would be done by only batch gradient, the other gradient algos will never reach the optimal value unless you reduce the training rate.
+    
+    8. If there is a large gap between validation error and training error in polynomial regression, then it means model is overfitting. ways to counter it:
+        1. regularisation through ridge or lasso
+        2. early stopping
+        3. Reduce the number of degree of polynomial
+        4. increasing size of training set
+    
+    9. High bias means that the model is too simple. High variance means model is too complex. If training error and validation error are both high it means that there is high bias. we need to choose a better model. that is underfitting you can also reduce the alpha of regularisation.
+    
+    10. Ridge regression avoids overfitting through regular regression.Ridge regression is always invertible.
+        Lasso uses l1 regression so it eliminates the importances of least required features, leads to sparse features.
+        Elasticnet is the middle ground. Because lasso sometimes leaves the correlated features.
+        
+     11. For classification between inddor/outdoor and daytime/nightime, since they are not mutually exclusive we use logistic regression
+
+Batch gradient descent for softmax without scikit learn
+
+   ![](contour_map_bgd_softmax.png)
+    
     
     
