@@ -116,7 +116,7 @@ Regularising Linear models
     
     The term added ensures that the parameters are minimum as possible. so there would be less variance. hence solves overfitting.
     
-    Ridge regression: regularised version of linear regression a term alpha * sum over n(theta square) is added to the cost function This forces the the learning algorithm to not only fit the data but also keep the modelweights as possible. This term is added to cost function only during training, The evaluation should be done with unregularised parameters.
+    Ridge regression: regularised version of linear regression a term alpha * sum over n(theta square) is added to the cost function This forces the the learning algorithm to not only fit the data but also keep the modelweights as low as possible. This term is added to cost function only during training, The evaluation should be done with unregularised parameters.
     
    ![](ridge_reg.png)
     
