@@ -93,6 +93,43 @@ if there are n features then the decision function is an n dimensional hyperplan
 
 So we need to minimise the ||w||, but we also want to have hard margin that is avoid any violations we need the decision funciton tobe more than 1 for all training instances and lower than -1 for negative training instances.
 
+During training of online SVMs the function used is max(0,1-t) andthis is called hinge loss.
+
 ![](hinge_loss.png)
+
+Time comparison :
+![](time.png)
+
+
+## Exercises
+
+    1. Fundamental idea of SVM is to find that widest possible margin while minimising margin violations. 
+    
+    2. A support vector is used to make a hyperplane, predictions only need support vectors
+    
+    3. If SVM is not scaled it will start neglecting small features and margin will be small.
+    
+    4. SVM classifier can output the distance between test instance and the decision boundary which can help in calculating confidence score. However this is not directly converted to a class probaillity, we need to specify probability =True explicitly.
+    
+    5. We should use primal form for large number of instances rather than using dual
+    
+    6. If SVm classifier trained with an RBF kerbel underfits then it means we need to increaset he value of C and gamma
+    
+    7. QP parameters can be changed for hard margin porblem. To suit the situation.
+    
+    8. SVC , LinearSVC, SGDClassifier comparison of decision boundary:
+    
+    I HAVE NO UNDERSTANDING HOW ALL THIS WORKS THOUGH. NEED TO BUCKLE DOWN.
+   ![](comparison_boundary.png)
+   
+    MylinearSVC:
+   ![](linear_svm.png)
+       
+    mylinear vs custom:
+   ![](custom_vs_svc.png)
+   
+    sgd classifier
+   ![](SGD_classifier.png)
+   
 
 
