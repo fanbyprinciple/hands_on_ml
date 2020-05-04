@@ -131,5 +131,10 @@ Time comparison :
     sgd classifier
    ![](SGD_classifier.png)
    
+    9.mnnist dataset with svm
+   ![](mnist.png)
+   
+    10. California housing
+   ![](california_housing.png)
 
 
