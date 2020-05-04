@@ -1,0 +1,91 @@
+Training and visualising
+
+    This can be done by export_graphviz function.
+![](iris_tree.png)
+
+Making predictions
+
+    You start at the root node then considering the conditions at each node we move down the tree.
+    
+    They require very little data preparation.
+    
+    Attribute description:
+        samples :  indicate howmany training instances it applies to.
+        value : tells you how many training instances of each class it applies to
+        gini: This tells you teh level of impurity, That is gini would be 0 if all training instances belonged to the same class
+    
+    Decision Tree boundary
+   ![](decision_tree_boundary.png)
+      
+      thick vertical lines represtnt the decision boundary of the root node depth 0 since left area is pure it cannot be split any further , however the right area is impure so depth -1 right node split at petal width 1.75 cm. right now the depth is 2, however if the max depth was three then again it would have split denoted but dotted lines.
+   
+White box model vs black model
+
+    This model is easy to intrepret that is why it is known as white box model
+    Random forest and neural network are called black box models as they are not easy to fathom
+    
+Estimating class probabilities:
+    
+    A decision tree can also estimate if an instance belongs toa class with certain amount of probability
+
+The CART training algorithm
+    
+    Scikit uses the Classification and Regression tree (CART) algorithm to train decision trees this idea is that algorithm first splits the training sets into two subsets using a single feature k and a threshold tk. how does it choose k and tk ?  it searches for a pair of k, tk in order to create the purest subset. 
+    
+    max_depth , min_samples_splitm min_samples_leaf, min_weight_fraction_leaf and max_leaf_nodes all affct CART.
+    
+    CART algorithm is a greedy algorithm: It greedily searches fot an optimum split at top leve, then repears the process at each level.
+    
+    finding the optimal tree is known as an NP compltet problem
+    It requires O(exp(m)) time.
+    
+    P is a set of problem that can be completed in polynomial time.
+    NP is a set of problem that can be verified in polynomial time.
+    NP-complete problem is both NP and NP-hard.
+    we donot know if P = NP
+
+Computational complexity
+
+    traversing decision tree takes roughly O(log2(m)) nodes. 
+    since each node only requires checking the value of one feature, the overallpreiction complexity is O(log2(m)) independent of the features.
+    
+    However training complexity is more because O(n x m log(m)) as the algorithm compares all features at each step.
+    
+Gini impurity or entropy
+
+    the gini impurity measure is used by default but you can select entropy measure also, by setting criterion hyperparameter. 
+    
+    Entropy comes from information theiry and is 0 when all messages are identical. reduction in entropy is calledinformation gain. entropy favors balanced tree but most of the time its inconsequential.
+    
+Regularisation Hyperparameter
+
+    Decision tree makes very few assumption so there is more chance of overfitting in decision trees. 
+    
+    it is called non parameteric model as the number of parameters are not defined befoer trianing.
+    
+    in a prametric model like linear model the degree of freedom is limited (however higher chance of underfitting)
+    
+    Decision tree overfitting is prevented by reglarisaiotn parameters:
+    
+    max_depth 
+    min_samples_split - min number of samples a node must have before it can be split
+    min_samples_leaf - min number of samples for a leaf node
+    min_weight_fraction_leaf - fraction of weighted instances that will be used in leaf nodes
+    max_leaf_nodes - max number of leaf nodes
+    max_features - max number of features that are evaluated before splitting each node
+    
+    another way is to train decision tree without restricitons then pruning (deleting) unnecessary nodes a node whose childern are all leaf nodes is considered unnecessary if the purity improvement is not statistically significant
+    
+    Standard statistical tests like the X2 test are used to estimate probability that the imporvement is purely the result of chance (which is also called null hypothesis)
+    
+    If this probability is higher than a given thrshold then the node is considered unecessary.
+    
+Decsiison tree on moon dataset
+
+    with default and min_samples_leaf=4 
+   ![](hyperparameter_effect.png)
+   
+Sensitivity to training details
+    
+   ![](sensitivity_to_training_details.png)
+    
