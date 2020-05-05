@@ -32,9 +32,11 @@ The CART training algorithm
     
     Scikit uses the Classification and Regression tree (CART) algorithm to train decision trees this idea is that algorithm first splits the training sets into two subsets using a single feature k and a threshold tk. how does it choose k and tk ?  it searches for a pair of k, tk in order to create the purest subset. 
     
+    It only produces binary trees.
+    
     max_depth , min_samples_splitm min_samples_leaf, min_weight_fraction_leaf and max_leaf_nodes all affct CART.
     
-    CART algorithm is a greedy algorithm: It greedily searches fot an optimum split at top leve, then repears the process at each level.
+    CART algorithm is a greedy algorithm: It greedily searches for an optimum split at top level, then repears the process at each level.
     
     finding the optimal tree is known as an NP compltet problem
     It requires O(exp(m)) time.
@@ -55,7 +57,7 @@ Gini impurity or entropy
 
     the gini impurity measure is used by default but you can select entropy measure also, by setting criterion hyperparameter. 
     
-    Entropy comes from information theiry and is 0 when all messages are identical. reduction in entropy is calledinformation gain. entropy favors balanced tree but most of the time its inconsequential.
+    Entropy comes from information theiry and is 0 when all messages are identical. reduction in entropy is called information gain. entropy favors balanced tree but most of the time its inconsequential.
     
 Regularisation Hyperparameter
 
@@ -85,7 +87,34 @@ Decsiison tree on moon dataset
     with default and min_samples_leaf=4 
    ![](hyperparameter_effect.png)
    
-Sensitivity to training details
+
+Regression
+
+    In regression instead of predicting a class in each node it predicts a value. You traverse the tree starting at root, and then you eventually reach leaf node that predicts the value. This prediction is simply the average target value of 110 training instances associated with the leaf node. 
     
-   ![](sensitivity_to_training_details.png)
+    Cart function cost function is related to mse it tries ot reduce the mean square error.
+    
+    they are prone to overfititng.
+    
+    Regression at different depths:
+   ![](regression_depths.png)
+   
+    Regression is prone to overfitting:
+   ![](regression_overfitting.png)
+    
+Instability
+
+    Decision tree have orthoganal decsion boundarys taht is all splits are perendicular to an axis. Which makes them sensitive to training set rotation. 
+    
+   ![](rotation1.png)
+    
+    another example:
+    
+   ![](rotation2.png)
+    
+    If you remove the widest Iris- versicolor from the iris dataset and train decision tree which is very different than the previous.
+    
+   ![](removing_versicolor.png)
+    
+
     
