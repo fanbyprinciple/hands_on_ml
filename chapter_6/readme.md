@@ -115,6 +115,22 @@ Instability
     If you remove the widest Iris- versicolor from the iris dataset and train decision tree which is very different than the previous.
     
    ![](removing_versicolor.png)
-    
+   
+   
+## Exercises
 
-    
+ 1. Depth of a well balanced tree containining m leaves is equal to log2m^3. A binary decision tree is lesss ot balanced. this if there are 1 million instances then decision treewillhave a depth of log210^6 = 20
+     
+ 2. gini impurity is generally lower than parents. Because of CART's cost functoin which splits each node in a way that minimises the weightedsum of its childrens gini impurities. however if one child is smaller than the other, a parent cna have more impurity as long as increase is more than compensated by decrease in other childs impurity.
+ 
+ 3. yes.to regularise the model, we can decrease max_depth.
+ 
+ 4. scaling the input features doesn't matter for decision tree.
+ 
+ 6. presorting the training dataset wll only affect the dataset if data set is smaller than a few thousand indices, ifit contaitns 100000 instances presortwill be very time consuming.
+ 
+ 7. Grid search cv best params :
+ ![](gsc.png)
+ 
+ 8. Growing a forest : 
+ ![](forest.png)
