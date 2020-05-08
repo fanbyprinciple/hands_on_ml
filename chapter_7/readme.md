@@ -77,4 +77,22 @@ The wrong classifications weights are boosted in a sequentia manner, so instead 
 
 ![](adaboost_learning_rate.png)
 
+adaboost uses a multiclass version denoted by SAMME (stagewise additive modelling using a multiclass exponential function)
+If there are two classes adaboost is equivalent to samme.If predicts_proba() function can beused then the SAMME performs better.
+
+WE trained Based on 200 decision strumps. using AdaboostClassifier . A decision stump is  adecision tree with max depth 1.
+
+### Gradient boosting
+
+In gradient boosting, it tries to fit new predictor tothe residual errors made by previous predictor. Regression is done by gradient tree boosting.  To finally make a regression we just add all the predictions.
+
+![](gradient_boosting.png)
+
+We can use GradientBoostRegressor class to create ensemebles. much like the random forest regressor class.It can control the growth of Decision trees (eg max_depth, min_samples_leaf) and hyperparameters to control training, such as the no. of trees n_estimators.
+
+learning_rate decides the contribution of each tree. If low then it generalisaes better. also called shrinkage, used as a regularisation technique. as an example off too few and too many tree trees affect on predictions.
+
+![](gbrt.png)
+
+
 
