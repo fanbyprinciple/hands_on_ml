@@ -94,5 +94,52 @@ learning_rate decides the contribution of each tree. If low then it generalisaes
 
 ![](gbrt.png)
 
+We can use early stopping through staged predict() method,return an iterator over the predictions made by the ensemble at each stage of training. The following code trains a GBRT ensemble with 120 trees then measures the validation error at each stage of training. and finally trains with an optimum number of trees.
+
+![](optimum_tree.png)
+
+Subsample hyperparameter in GradientBoostingRegressorclass specifies the fraction of training instances to be used for training each teree. This trades higher bias for a low variance. It speeds up the training. This is called Stochastic Gradient Boosting.
+
+### Stacking
+
+Stacked generalisationn. Instead of using trivial functions (such as hard voting) to aggregate the predictions of all predictors in an ensemble.  So the model that chooses the predictions between the classifier is also trained which one to choose.also called a meta learner or blender.
+
+It is possible to train different blenders so you can stack blender on top of another. 
+
+Scikit doesn't support stacking automatically but we can perform out own implementation.
+
+## Exercises
+1. If you have trained five different models on the exact same training data, and
+they all achieve 95% precision, is there any chance that you can combine these
+models to get better results? If so, how? If not, why?
+
+we can.It will work if the modelsare very different , it will work better if models are trained on different training data.
+
+2. What is the difference between hard and spft voting ?
+
+Hard voting counts the votes and picks the one with most votes
+Soft voting computes the average estimated class probability of each class and then picks the best class. Soft margin only works if it has predict_proba function,it gives high confidence votesmore weight.
+
+3. Can we speed bagging ensemble by distributing it over multiple servers. what about pasting ensembles , boosting ensembles, eandom  forest, stacking ensembles
+
+Since each predictor in the ensemble is independent of the others. It ccan be done of pasting ensemebles and random forest and bagging ensembles. However in a boosting ensembles we cannot do that because it depends on previous predictions. It can be dine in stacking at layer level only after previous layer is done.
+
+4. wah tis the benefit of out of bag evaluation ?
+
+makes use of features not selected in bagging for validation
+
+5. What makes extra trees more random than regular forest ?
+
+In random forest only a random subset of features is considered for splittinga  node. however in extra trees, they go one step further, rather than searching for ht best possible thresholds they use random thresholds for each feature. This acts like regularisation.Inpractice they are not much higher or lower when making predictions
+
+6. WE can increase the number of estimators so to avoid underfutting  in Adaboost we can also increase the learning rate.
+
+7. If gradient boosting overfits we should reduce the learning rate. we can also use early stopping
+
+8. Voting classifier on mnist
+![](voting_classifier_on_mnist)
+
+9. Stacking clssifier on mnist
+![](stacking_classifer_on_mnist)
 
 
