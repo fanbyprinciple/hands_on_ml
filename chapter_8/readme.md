@@ -24,7 +24,9 @@ example of 3D dataset lying close to a 2D subspace:
 Converting it into projection in 2D plane:
 ![](3d_dataset_projection.png)
 
-Many dimensionality reduction algorithms work by modelling the manifold on which training instances lie this is called manifold learning it relies on manifold assumption also called manifold hypothesis which holds modt real world high dimensionality datasets lie lose to a much lower dimensional manifold. 
+Many dimensionality reduction algorithms work by modelling the manifold on which training instances lie this is called manifold learning 
+
+it relies on manifold assumption also called manifold hypothesis which holds modt real world high dimensionality datasets lie lose to a much lower dimensional manifold. 
 
 in mnist the degree of freedom to create an digit image is very lower than degree of freedom to create any image of your choice. these contraints squeeze the datset into a lower dimensional manifold.
 
@@ -57,7 +59,7 @@ PCA variance plot
 
 A unit vector that defines the ith axis is called ith principal component (PC). 
 
-Finding the principle componenet is done through sinular value decompositions
+Finding the principle componenet is done through singular value decompositions
 
 Decomposing the training set matrix X into dot product of three matrices U . Sigma . V.T where V the contains the principle component we are looking for
 
@@ -96,7 +98,7 @@ In incremental PCA you can split the training set into mini batches and feed the
 
 ### randomised PCA
 
-his stochastically bulds an approximation on give number of features.
+It stochastically builds an approximation on given number of features. It is quick.
 
 PCA vs Randomised on number of samples
 ![](pcavsrpca1.png)
@@ -123,12 +125,36 @@ It is another very powerful nonlinear dimesnionality reduction technique. It is 
 
 LLE works by first measuring how each training instance linearly relates to its closest neighbhors and then looking for low - dimensional representation of the thre training set where these local relationships  are best preserved.
 
+for each training instance x(i) the algorithm identifies its k closest neighbors (in the preceding code k=10) then tries to recontruct. x as a linear function of there neighbhors more specifically it finds weights w(i,j) such that the squared distance between x and sum(w(i,j)x(j)) is as small as possible. assuming w(i,j) =0 if x is not the k closest neigbhor of x(i)
+
+THis first step is a contraint optimisation problem with weights W.the second constraint simply normalises the weights for each training instances x(i).
+
+computational complexity:
+for finding k nearest neighbors O(m log(m)nlog(k))
+for optimising wieghts O(mnk^3)
+for recontsruction of lowe dimesnional represenstation O(dm^2)
+
 ![](lle.png)
 
 
 ### MDS, Isomap and t-SNE
 
+MDS :  multi dimensional Scaling - reduces dimensionality whilepreserving disatnace between instances.
+
+Isomap : creates a graph by connecting each instances to its nearest neighbors then reduces dimensionality while trying to preserve geodesic distances between the instances, geodesic distance between two nodes is a graph is the number of nodes on the shortest path berween these nodes.
+
+t-SNE : reduces dimensionality while tryinig to keep similar instances close and dissimilar instances apart used for visualisation
+
+Linear Discriminant Analyssis :  Is actualy a classificiation algogrithm but during training it learns the most discriminative axes between the classes and these axes can then be used to define a hyperplane onto which to project the data. The benefit being that the projection will make the classes as fara apart as possible, so LDA is a good technique to reduce dimensionality before applying something like the svm classifier.
+
 ![](mit.png)
+
+# Clustering and classification
+
+On Iris dataset typical representation of cluster and classification
+![](cluster_vs_classify.png)
+
+
 
 
 
