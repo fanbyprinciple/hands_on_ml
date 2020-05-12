@@ -154,6 +154,49 @@ Linear Discriminant Analyssis :  Is actualy a classificiation algogrithm but dur
 On Iris dataset typical representation of cluster and classification
 ![](cluster_vs_classify.png)
 
+We can do cluster classfiication usign gaussian mixture
+![](gaussian_mixture.png)
+
+### K means
+We can do clustering through K meansalgorithm
+
+![](kmeans.png)
+
+Hard clustering -  making predictions at an arbitary distance form centroid
+soft clustering - using euclidean distance to make clusters
+
+Algorithm:
+
+first initialise k centroids randomly: k distinct instances are chosen randomly from dataset and the centroids are placed at their locations
+
+Repeat until convergence
+assign each instance to the closest centroid
+update the centroids to be the mean of the instances that are assigned to them
+
+![](kmeans_action.png)
+
+Kmeans is optimised version. Original K means can be obtained by set init="random", n_init=1 and algorithm="full"
+
+K means variability
+![](kmeans_variability.png)
+
+### K means ++
+
+Instead of inititalising the centroids randomly we can inititlise using algorithm given by David Arthur and Sergei Vassilvitskii
+
+Take one centroid c1
+Take a new center c(i) choosing instance x(i) with probability D(x(i)^2/ sum(D(x(j)^2)
+where D(x(i)) is the distance between instance x(i) and the closest centroid that was already chosen.
+
+repeat till allcentroids are chosen
+Rest is just reguar Kmeans. we just have to select k-means++ , whic is by default
+
+![](kmeans_plusplus.png)
+
+### K means minibatch
+
+![](kmeans_minibatch.png)
+
 
 
 
