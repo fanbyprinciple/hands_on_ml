@@ -198,6 +198,56 @@ Rest is just reguar Kmeans. we just have to select k-means++ , whic is by defaul
 ![](kmeans_minibatch.png)
 
 
+### Elbow diagram
+
+increasing the value of k increases inertia but doen't help in classification
+
+![](bad_classification.png)
+
+we can find the best value of k by elbow diagram
+
+![](elbow_diagram.png)
+
+choosing the correct value of k :
+![](correct_k.png)
+
+### silhouette diagram
+
+![](silhouette_vs_k.png)
+
+### silhoette analysis diagram
+
+It is an informative visualisaiton where we plot every instance's silhoette coefficient, sorted by cluster they are assigned to and the value of coefficient.
+
+This is called silhoette diagram:
+![](silhouette_diagram.png)
+
+limits of kmean
+![](limits_of_kmeans.png)
+
+### K means for image segmentation
+
+so each of the 425400 instances is replaced by the centroid value of clusters
+
+![](flower.png)
+
+
+
+### K means for preprocessing
+we will try and improve accuracy by using preprocessing by kmeans as a
+preprocessing step. We will create a pipeline that will first cluster the training set into 50
+clusters and replace the images with their distances to 50 clusters then apply
+logistic regression
+
+![](preprocessing.png)
+
+### K means for semi supervised learning
+
+It means we have plenty of unlabelled data and very few labelled instances
+
+![](semi_supervised.png)
+
+
 
 
 
