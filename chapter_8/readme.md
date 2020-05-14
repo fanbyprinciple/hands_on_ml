@@ -248,6 +248,44 @@ It means we have plenty of unlabelled data and very few labelled instances
 ![](semi_supervised.png)
 
 
+### DBSCAN
+
+Density based spatial clustering of applications with Noise
+
+DBSCAN will start by dividing the data into n dimensions. After DBSCAN has done so, it will start at a random point (in this case lets assume it was one of the red points), and it will count how many other points are nearby. 
+![](dcgan1.png)
+
+eps indicates howclose must the instnaced be to be taken as part of the same cluster.
+![](dbscan.png)
+
+using knn
+![](knn.png)
+
+### spectral clustering
+
+![](spectral_clustering.png)
+
+### gaussian mixture
+
+A generative clustering algorithm, it can be used to create X and y. 
+After fitting
+
+![](gaussian_mixture1.png)
+
+gaussian full vs tied covariance:
+![](gaussian_compare1.png)
+
+gaussian spherical vs diag covariance:
+![](gaussian_compare2.png)
+
+AIC and BIC used to measure effectiveness of gaussian mixture
+
+![](bic_bestk.png)
+
+
+
+
+
 
 
 
