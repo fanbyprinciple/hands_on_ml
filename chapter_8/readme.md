@@ -263,7 +263,46 @@ using knn
 
 ### spectral clustering
 
+https://towardsdatascience.com/spectral-clustering-aba2640c0d5b
+
+Key concepts:
+
+Eigen vectors
+We can think of the matrix A as a function which maps vectors to new vectors. Most vectors will end up somewhere completely different when A is applied to them, but eigenvectors only change in magnitude. If you drew a line through the origin and the eigenvector, then after the mapping, the eigenvector would still land on the line. The amount which the vector is scaled along the line depends on λ.
+
+Graph
+A connected component is a maximal subgraph of nodes which all have paths to the rest of the nodes in the subgraph.
+
+adjacency matrix: matrix containing which nodes are connected to which
+
+degree matrix: how many edges are connected to a node is the degree. a matrix of all these degrees is called degree matrix.
+
+Laplacian matrix is a representation of graph given by D -A
+
+No. of zero eigen values represent the connected componenet of the graph
+
+The first eigenvalue is 0 because we only have one connected component (the whole graph is connected). The corresponding eigenvector will always have constant values (in this example all the values are close to 0.32).
+
+![](spectral1.png)
+
+The first nonzero eigenvalue is called the spectral gap. The spectral gap gives us some notion of the density of the graph. If this graph was densely connected (all pairs of the 10 nodes had an edge), then the spectral gap would be 10.
+
+![](spectral2.png)
+
+The second eigenvalue is called the Fiedler value, and the corresponding vector is the Fiedler vector. The Fiedler value approximates the minimum graph cut needed to separate the graph into two connected components. Recall, that if our graph was already two connected components, then the Fiedler value would be 0. Each value in the Fiedler vector gives us information about which side of the cut that node belongs.
+
+![](spectral3.png)
+
+Essentially in spectral clustering all node values are points in graph. And to make cluster we just look at the lowest value eigen vector, if the no. of cluster are 4 then we look at first four eigen vectors
+
+
 ![](spectral_clustering.png)
+
+### Agglomerative clustering
+
+The agglomerative clustering is the most common type of hierarchical clustering used to group objects in clusters based on their similarity. It’s also known as AGNES (Agglomerative Nesting). The algorithm starts by treating each object as a singleton cluster. Next, pairs of clusters are successively merged until all clusters have been merged into one big cluster containing all objects. The result is a tree-based representation of the objects, named dendrogram.
+
+Works in bottom up manner.
 
 ### gaussian mixture
 
@@ -283,6 +322,24 @@ AIC and BIC used to measure effectiveness of gaussian mixture
 ![](bic_bestk.png)
 
 
+### Variational Bayesian Gaussian Mixtures
+
+Rather than optimally searching for clusters it is possible to use instead bayesianGaussianMixture class which iscapable of giving weights equal or close to zero to unnecessary clusters. 
+
+We have to set the number of components to a value that is greater than optimal clusters and algorithm will remove unecessary clusters automatically.
+
+![](bgm.png)
+
+
+Comparing different values of weight concentration prior
+![](wcp.png)
+
+Bayesian gaussian Mixture on moon dataset
+![](moon_bgm.png)
+
+### Liklihood estimator
+
+![](liklihood_estimator.png)
 
 
 
