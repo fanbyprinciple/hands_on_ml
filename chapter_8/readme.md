@@ -341,6 +341,46 @@ Bayesian gaussian Mixture on moon dataset
 
 ![](liklihood_estimator.png)
 
+# Exercises
+
+1. Advantages of dimensionality reduction
+spped up the training algorithm
+To visulaise the training data better
+to save space
+
+Drawbacks of dimensionality reduction -
+somw information is lost
+computationaly intensive
+adds complexity to machine learning pipelines
+transformedfeatures are hard ti ubterceot
+
+2. The curse of dimensionality means that many problems that do not exist in low dimensional space arise in high dimensional space, here the vectors are sparse,increasing the risk of overfittign and making it difficult o tindetify data
+
+3. We cann never fully reverse the dimensionality ioeration.
+
+4. PCA can be used in non linear dataset to remove unwanted data. However in datasets like swiss roll PCA can significantly affect the information.
+
+5. when applying PCA on a 1000 dimensional dataset with variance of 95 percent. The dimension of resulting dataset will depend on data instances. plotting the explained variance as afunction of dimensionas we can get a rough idea as to if applying pCA is a valid thing to do. PCA explained_variance_ratio is one wayto move forward
+
+6. Regular PCA : by default used when dataset can fit in memeory.
+Incremental PCA : splitthedataset into mini batches and feed an IPCA algorithm one mini batch at a time, and apply PCA online
+Randomised PCA : finds approximaton of first d principle componenet
+Kernel PCA : kenel trick is a way to map into high dimensional space, and then linear decision boundary in high dimensional space results in non linear complex decision boundary in lower dimensionality space
+
+7. Evaluation of dimensionality reduction can be done by : 
+    a. mesuring the reconstruction error
+    b. chain dimensionality reduction with another algorithm and the measure the cost of algorithm as to determine efectiveness
+    
+8. We can chain two different dimensionality reduction algorithm , we can use pca to quicly redice the number of dimensionality and then chain with LLE
+
+9. accuracy and trianing speedup using pca on softmax
+![](softmax_pca.png)
+
+10. Mnist and pca
+![](mnist_colormap.png)
+
+Three two and 5
+![](3_2_5.png)
 
 
 
