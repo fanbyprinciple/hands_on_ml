@@ -382,6 +382,28 @@ Kernel PCA : kenel trick is a way to map into high dimensional space, and then l
 Three two and 5
 ![](3_2_5.png)
 
+T-SNE with labels:
+![](tsne_label.png)
+
+2, 3, 5 with label:
+![](2_3_5_label.png)
+
+PCA visualisation:
+![](comet.png)
+
+LLE visualisation:
+![](eiffel_tower.png)
+
+MDS visualisation:
+![](MDS.png)
+
+LDA visualisation
+![](mitsubushi.png)
+
+PCA followed by TSNE
+![](winner.png)
+
+
 
 
 
