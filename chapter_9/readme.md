@@ -19,7 +19,15 @@ tf-slim for simplifying building, training and evaluating neural network
 provides advanced optimisation nodes to search for parameters to minimise a cost function. Tensorflow autmatically takes care of computing gradients of function we define
 
 tensorboard to visualise computation graph, view learning graph.
+Complex graphs yet to understand.
 
+![](tensorboard_visualisation.png)
+
+Example for modularity
+
+![](modularity.png)
+
+Need to do from modularity in book.
 
 
 
