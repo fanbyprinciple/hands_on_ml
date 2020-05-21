@@ -101,6 +101,9 @@ moon dataset;
 logistic regression on test data:
 ![](log_reg2.png)
 
+logistic regression after adding x^2 and x^3 to training
+![](log_reg3.png)
+
 
 
 
