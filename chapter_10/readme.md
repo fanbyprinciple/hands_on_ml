@@ -16,6 +16,8 @@ However it turns out that thel limitation of Perceptron can be solved by stackin
 
 ![](mlp_xor.png)
 
+Neuron that fire together wire together
+
 ### Multi layer perceptron and back propagation
 
 A MLP is composed of one(passthrough) input layer and followed by one of more layers of LTU, and one final layer called the otput layer
@@ -59,6 +61,11 @@ Their derivative:
 
 ### Feed forward Neural network
 The ouput of each neuron corresponds to the estimated probability of the corresponding class. Notice that the signal only flows in one direction from inputs to outputs.
+
+### Using plain tensorflow
+
+Using the number of hidden layer to be at 300 and 100, creating a placeholdervariable fo reach of the training instances. The actual nerual netweor has 2 hidden layers and they only differ by the number of inputs and the outputs they contain, output uses softmax
+
 
 
 
