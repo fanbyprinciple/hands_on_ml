@@ -66,6 +66,82 @@ The ouput of each neuron corresponds to the estimated probability of the corresp
 
 Using the number of hidden layer to be at 300 and 100, creating a placeholdervariable fo reach of the training instances. The actual nerual netweor has 2 hidden layers and they only differ by the number of inputs and the outputs they contain, output uses softmax
 
+![](fully_connected.png)
+
+### Fine tuning of parameters
+
+We can use randomised search as grid search is out of the question
+and we can use toolssuch as oscar to speed up the hyperaparmaeter tweaking
+
+1. Number of layers:
+
+DNN handles large parameters thorugh reusing graph, similar to copy paste
+lower hidden layers model low level datasets.
+
+Hierarchical architecture help DNN converge faster and also helps generalise better
+
+2. Number of Neurons per hidden layer
+
+A common practice is to shape them as a funnel
+
+We can also use early stopping to stop where we want to.
+use big pantsthat will eventulaly shrink down
+
+3. Activation functions:
+
+Relu. it is faster. for hidden layer, and gradient descent does not get stuck on plateaus.
+
+for output softmax layer is good as you can get class probabilities when classes are mutually exclusive
+
+For regression no activation function is requred at output
+
+## Exercises
+
+2. A classical perceptroon will converge only if the datset is linearly seperable and it won't be able to estimate class probabilities, If you cahnge the percceptrin activaton to logistic acivation function (or the softmax activation if there are multipt neurons) Then it becomes equivalent to a logistic regression classiifer
+
+3. Logistic activaiton functoin was used in MLP because its derivative is always nonzero, so gradient descent can always roll down the slope. when activation function is a step function, gradient descent cannot move, as there is no slope at all.
+
+4. ReLU, Softmax, and tanh and step.
+
+5. one input layer with 10 passthrough neuron
+       one hidden layer with 0 neurons 
+       one output layer with 3 artificial neurons
+   
+   input shape(None,10)
+   shape of hidden layer weight vector = W(10,50)
+   shape of bias vector(50)
+   shpae of output layer (50,3)
+   bias ofoutput vector (3)
+   output matrix y(None, 3)
+   functionto compute matrix Y = (X * Wh+ bh )* Wo + bo
+
+6. classify email into ham or span -  one neuron in output layer
+   activation function in the output layer - Logistic
+   
+   neurons required in MNIST - 10 neuron in output layer
+   activation function in MNIST - softmax
+   
+   housing neurons required - one output neuron
+   activation function required - no activation function
+ 
+7. Back propagationis atechiniqu used to train artificial neural networks, it first generates the gradients of the cost function with regards to every model parameter(all weights and biases) and then provides a Gradient Descent step using these gradients. The backpropagation is typically performed thousands or millions of times,using many training batches, until the cost function converges to a minimium. Reversemdoe autodiff performs a forward pass thorugh computation graph, then performs a reverse pass. reverse mode autodiff is a technique ot compute gradients efficiently, it happens to be used by backpropagation.
+
+note: when the values of predict can vary by many orders of magnitude then we may want to predict logrithm of target value than the target value directly, simply computing the exponential of the neural network will give the estimated value
+
+8. Here is a list of all hyperparameter we can tweak in a MLP : the number of hidden layers, the number of neurons in each layer, the activation function in hidden layer and the output layer. ReLU is agood defau;t for hidden layers. The output layer in general you will want a logistic activation function for binary classification, the softmax activation function for multiclass classification, or no activation function for regression.
+
+9. MLP on MNIST - 
+
+![](MLP.png)
+
+
+ 
+ 
+ 
+ 
+    
+
+
 
 
 
