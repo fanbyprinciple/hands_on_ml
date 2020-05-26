@@ -62,4 +62,16 @@ The manideawback is it is slower to compute bbut durin gtraining it has faster c
 for deep neural networks:
 ELU > leaky RElu > Relu > tanh > logistic
 
+There is something called SELU which is even better.
 
+![](selu.png)
+
+### Batch Normlisation
+
+It is given as a solution to exploding graidents.
+In this we add an operation tomoel just before ativation function of each layer,simpy centring and noramlising the inputs, then scaling andshifting the result. It lets you find the optimal scale and mean of inputs of each layers.
+
+inorder to zero center and normalise the algorithm needs to estimate the mean and standard devaition. I evaluated the mean and standard devaition
+At test timewe use the entire mean and standard devaition since mini batch is not available
+
+Batch normailisaation removes the need because it add complexity but noramlisation is not needed
