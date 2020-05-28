@@ -69,9 +69,17 @@ There is something called SELU which is even better.
 ### Batch Normlisation
 
 It is given as a solution to exploding graidents.
-In this we add an operation tomoel just before ativation function of each layer,simpy centring and noramlising the inputs, then scaling andshifting the result. It lets you find the optimal scale and mean of inputs of each layers.
+In this we add an operation to model just before ativation function of each layer,simpy centring and noramlising the inputs, then scaling andshifting the result. It lets you find the optimal scale and mean of inputs of each layers.
 
 inorder to zero center and normalise the algorithm needs to estimate the mean and standard devaition. I evaluated the mean and standard devaition
 At test timewe use the entire mean and standard devaition since mini batch is not available
 
 Batch normailisaation removes the need because it add complexity but noramlisation is not needed
+
+It takes in a zero centered and normalised input, then scales and shifts it.
+
+### Gradient clipping 
+
+A way to lessen the exploding gradients problem is to clip the gradients during back propogation so that they never exceed some threshold this is used in recurrent neural network. People prefer Batch normalisation to gradient clipping in most other kinds of neural network.
+
+![](gradient_clipping_accuracy.png)
