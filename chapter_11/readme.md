@@ -83,3 +83,20 @@ It takes in a zero centered and normalised input, then scales and shifts it.
 A way to lessen the exploding gradients problem is to clip the gradients during back propogation so that they never exceed some threshold this is used in recurrent neural network. People prefer Batch normalisation to gradient clipping in most other kinds of neural network.
 
 ![](gradient_clipping_accuracy.png)
+
+### Reusing pretrained layers
+
+When we reuse the lower layers of the network it is called transfer learning.
+We should try and reuse the parts of network, if the input is not same as the onews used in original task we will have to add a preprocessing step to resize them to the size expected.
+
+![](reuse_accuracy.png)
+
+### basics
+
+loss function : signifies thecost of a predcition, the more wrong the prediction the higher the loss
+activation function: so that the output is changed to a more mangeable value
+
+### reusingcode from other frameworks
+
+If the model was trained using another framework, we need to load the weights manually, then assign them apropriate variables. 
+
