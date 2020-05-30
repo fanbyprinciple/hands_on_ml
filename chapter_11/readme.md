@@ -100,3 +100,7 @@ activation function: so that the output is changed to a more mangeable value
 
 If the model was trained using another framework, we need to load the weights manually, then assign them apropriate variables. 
 
+### learning rate scheduler
+
+![](learning_rate_scheduler.png)
+
