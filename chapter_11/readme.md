@@ -257,6 +257,44 @@ One way is to simply add the resgularisation terms to the ost function. But this
 
 ![](using_tensorflow_regularisation.png)
 
+### Dropout
+
+Even the state of art ml models got a 1-2% accuracy imporvement by just using dropout. When a model already has 95% accuracy getting a2% accuracy means dropping the error rate almost 40 percent.
+
+The algorithm is pretty simple. At each training step, every neuron has a probability of p of being dropped, meaning at this training step it will be ignored and may be used in future training. The hyperparamter P is called the dropout rate typically set to 50 percent. After training the neurons don't get dropped anymore.
+
+But to compensate for the testing part we need to multiply each input connection weight by the keep probability (1-p) after training.To implement dropout using tensorflow we can simply add the dropout() function to the input leayer and the output of every hidden layer.
+
+### Max norm regularisation
+
+For each neuron it constrains the weight w of the incoming connection such taht ||w||2 <= r where r is the max-norm hyperparameter and l2 normm is used we compute w2 and clipping if needed
+
+w is updated as w = w * r / ||w||2
+
+Reducing r increases the amount of regularisation
+
+![](max_norm.png)
+
+
+### Data augmentation
+
+IT the art of creating artificial training sets
+
+## Guidelines
+
+1. initialisation = He
+2. activation = ELU
+3. normalisation = Batch normalisation
+4. regularisation = dropout
+5. optimizer = Adam
+6. learning_rate_schedule = None
+
+1. if you can find good learning rate, learning_schedule with decay can be used
+2. Id training set is too samll we can implement data augmentation
+3. for sparse model we can add l1 regularisation we can use FTRL for even sparser oprimisation
+4. Leaky relu for fast model at runtime, having a sparse model will help
+
+
 
 
 
