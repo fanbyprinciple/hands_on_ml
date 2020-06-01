@@ -294,6 +294,25 @@ IT the art of creating artificial training sets
 3. for sparse model we can add l1 regularisation we can use FTRL for even sparser oprimisation
 4. Leaky relu for fast model at runtime, having a sparse model will help
 
+# Exercises
+
+1. No if the initialisation is same then the entire model will remain the same. That is each layer will behave like having one neuron
+2. It is perfectly fine to keep biases to zero
+3. Advantages of ELU : 
+    1. It can take naegative values, alleviates vanishing gradients
+    2. Can never have vanishing gradients
+    3. It helps alleviate the dying units issue
+    4. It is smooth everywhere
+4. ELU - it is a good default
+    leaky RELU - forfaster convergence
+    RELU -IT precisesly outputs zeo which is useful
+    tanh - can be used if you need an output between -1 ans 1
+    logistic - variational autoencoders use them
+    softmax - multiple mutually exclusive classes
+ 5. Momemtum parameter will decide on speed of MomentumOptimizer,it might take longer to convere because it shoots out from the minimium
+ 6. Producing a sparse model with most wights equal to zero , we can apply l1 regularisation, train the model noramlly then zero out tiny weights, using dual averageing using tensorflow FTRLOptimizer class
+ 7. Dropout do slow down traning, it has no effect on inference since it is turned
+
 
 
 
