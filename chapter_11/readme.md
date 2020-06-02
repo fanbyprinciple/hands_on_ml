@@ -313,6 +313,9 @@ IT the art of creating artificial training sets
  6. Producing a sparse model with most wights equal to zero , we can apply l1 regularisation, train the model noramlly then zero out tiny weights, using dual averageing using tensorflow FTRLOptimizer class
  7. Dropout do slow down traning, it has no effect on inference since it is turned
 
+ Practical exercises 8, 9, and 10 were the bomb. I really need to do this chapter again.
+
+ ![](mnist_compare.png)
 
 
 
