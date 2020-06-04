@@ -37,3 +37,28 @@ when tensorflow tries to run on a device it will have an implementation for that
 4. soft placement
 
 By default if you try to pon an operation on a device for which the operation has no kernel, we get the exeption however if we want the execution to falll back on cpu instead we can use `allow_soft_placement` configuration option to True.
+
+### Parallel Execution
+
+When Tensorflowruns a graph it starts by finding the list of nodes that need to be evaluated and it counts how many dependecies each of them has. Tensorflow then evalutest the node with zero dependencies.
+If nodes are placed on seperate devices they obviously get evaluated in parallel too(in separate GPU threads and CPU cores)
+
+TF maintatins a thread poolon each device to parallelizeoperations.They are called inter op thread pools. These operations have multi threaded kernels They cn use other threadpools one per device called intra op thread pools.
+
+`inter_op_parallelism_threads` operatons for inter-op pool threads
+`intra_op_parallelism_threads` operations for intra op pool threads
+
+### Control Dependencies
+
+Sometimes we might like to make some operations defer their occupation of ram
+TOpostpone evaluationof somemodes we use control dependencies
+
+### Multiple Devices Across Multiple Servers
+
+To run a graph accross multiple servers you define a cluster. A is composed of one or more Tensorflow servers called tasks, typically spread accross several machines.
+
+Each task belongs to a job ( a group of tasks)
+
+example a cluster of "ps" parameter server
+performing computation such as "worker"
+
