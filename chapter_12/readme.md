@@ -1,3 +1,14 @@
+The chpater covers:
+
+1. Muliple GPU devices
+2. setting up and starting a tensorflow cluster
+3. Distributing computations accross multiple devies and server
+4. Sharing variables accrosssessions usnig containers
+5. Coordinating variablesusing queues and readers 
+6. Coordinating multiple graphs working asynchronously using queues
+7. Reading inputs efiiciently using readers, queue runners and coordinators
+8. Parallelizing Neural Network on a tensorfow cluster
+
 1. run `nvidia-smi` on command line too get details about our GPU.
 
 
@@ -146,6 +157,127 @@ q = tf.PaddingFIFOqueue()
 if we dequeue one item ata time we getexact same tensors that were enqueued, however when we use dequeue many we get padded response
 
 This type of queue can beuseful when you are dealing with variable length inputs such as sequence of words
+
+### Loading Data directly from the Graph
+
+So far we assumed that lcients would load the training data and feed it to the cluster using placeholder
+
+other methods are:
+1. Preloading the data into a variable
+
+For datasets that can fit in memory,a better option is to load the training data once and assign it to a variable then just use that variable
+This is called preloading of the training set. 
+
+We must also set trainable to false so that optimiser don't try and tweak this variable
+and also set the collections=[] to ensure that it doesn'tget added to Graph Keys.GLOBAL_VARIABLES collection, this is used for saving and resotring checkpoints
+
+This example assumes that all of your training sets consist of only float32 values
+
+2. Reading the training data directly from the graph
+
+We can use reader operations that will directl read data from filesystem. This waythe training data never needs to flow through the clients at all, tensorflow provides for various file formats
+
+CSV
+Fixed length binary records
+TFown tfrecords format based on protocol buffers
+
+we use a textlinereader to read this file. This will be output to a keyand value pair that can then be preprocessed and be done with rest of the workflow.
+
+3. We can also multithread readers using a coordinator and QueueRunner
+
+A coordinator is a very simple object whose sole purpose is to coordinate stopping multiple threads 
+we create a cordinator then give it all threads that needs to stop jointlu . Any thread that can request that every thread stop by callingthe coordinators requeat_stop() method
+
+A QueueRunner runs multiple threads that each run an enqueu operation repeatedly filling up a queue as fast as possible. As soon as the queue is closed the next thread that tries to push an item to the queue will get an Out ofRange Error this thread catches the error and immediately tells other threads to stop using a coordinator
+
+The first line creates the queueTunner and tells it to run five threads, all running the same enqueue_instance operation repeatedly. Then we start a session and we enqueue the name of the files to read.Next we create a coordinato r taht queueRunner will use to stop gracefully
+
+This will be a bit moreefficient than earlier but we can do better
+we can read themfrom different files
+
+4. Other convenient functions
+
+string_input_producer()
+
+shuffle_batch() takes a list of tensors and creates a RandomShuffleQueue, a queue runner a dequeue operation to extract mini batch
+
+## Parallelizing neural network on a tensorflow cluster
+
+Trickier problem of training a single neural network accross multiple devices and servers
+
+### One neural network per device
+Best way to train and neural network on  atensorflow cluster s to take theexact same code you would use for a single device on a single machine and specify masterserver address. we can change the device that willrun our graph by simply putting our codes construction phase withina device block.
+
+This is perfect for hyperparameter tuning: each dvice in the cluster will train a different model with its own set of hyperparamers
+
+This also words well if we host a web service that recieves a large number of queries per second(QPS) and we need our neural network to make a prediction for each query, We simply replicate the neural network accross all devices on the cluster and dispatch queries accross all devices.By adding more servers we can handle an unlimited number of QPS (This will not reduce time to process a single request howver)
+
+There is also the use `tensorflow serving`
+desgned to serve high amount of queries to machine learning models (typically built with tensorflow) It handles model versioning so you can esily handle new versionof your production
+
+### In graph vs between graph replication
+
+We can also place neural network on every device. like an ensemble. we then use the ensemble prediction
+
+This can be handled in two major ways
+1. we can create on big graph containing every neural network, each pinned to a differnet device plus the computations needed to aggregate the individual preconditions from all the neural networks then we creat one session from any server for taking care of individual predictions thisis called in-graph prediction
+
+2.alternately we can create multiple graphs for each neural network and handle synchronization between graphs ourselves this is called between graph replication
+
+These solutionsa have their pros and cons
+in graphreplication is somewaht simpler since you dont have to manage multiple clients and multiple queues how even in between is a bit better ti organise
+we can also add a timeout through passing a RunOptions with timeout_in_ms
+
+### Model parallelism
+
+running single neural network to mulptiple devices. 
+IT is highly dependent on the architecture chosen like CNN or RNN
+
+### Data parallelism
+
+Another way is to replicate it on each device running a training step by using different mini batch
+
+The update of parameter to central model can happen in two ways
+1. Synchronously :  aggregator waits for all gradients to be availabel before computing the average and applying the result (using theaggregated gradients to pdate the model parameters ) once a replica hasfinished computin itmust wait for the parameters to be updated, to save time we can also ignore the gradients of slowest
+
+2. Asynchronously : The weights are immediately updated. Although it iissurprising it works. It has a stake gradient problems that is when it these gradients are seriously unable to compute
+
+There ar ea few ways to reduce the effects of stale gradients:
+Reduce learning rate
+Drop stale gradients or scale them down
+Adjust mini batch size
+Start the first few epochs using just one replica (Called warmup phase)
+
+However it also creates a problemof bandwidth saturation becuse of the time spent in moving data in and out of gpuram
+
+saturatoin ismore sever for large dense models It is less sever for small models since the gradients are typically moslet zeros. 
+
+We can avoid this problem by Grouping out GPU on a few servers rather than scattering them accross many servers
+Shard the parameter
+
+Drop the model parameters float precision from 32 bits to 16 bits. This will cut in half the amount of data to transfer without much impact on convergence rate or model performance
+
+Although 16 bit precision is minimum we can also drop the precision with a process known as quantizing the network which helps to run mobile networks on mobile phones.
+
+### Steps for tensorflow implementation
+
+1. We need to choose wether we waant in graph replication or between graph , synchronous or async updates
+
+2. With in-graph replication we build one big graph containing all the model replicas placed on different device and a few nnodes to aggregate all the gradients and feed them to an optimizer. Your code opens a session to a cluster and simply runs the training operaton repeatedly
+
+With in graph with async we create one graph, with one optimizer one therad repeatedlyrunning the the replicas optimizer
+
+with in between graph and sync we run a mi=ultiple independent clients, each trining trh model replica as if it were alone in the world
+
+with between graph and syn we run multiple clients , each training model replica based on shared parameters but this time we wrap the optimizer with a syncReplicaOptimizer The chief. It aggregateds and applies gradients. This approach also support spare replicas
+
+# Exercises
+
+1. 
+
+
+
+
 
 
 
