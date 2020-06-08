@@ -273,7 +273,25 @@ with between graph and syn we run multiple clients , each training model replica
 
 # Exercises
 
-1. 
+1. When CUDA out of memory error is raisedit means teh GPU is occupied, look at CUDA_VISIBLE _DEVICES environment variable for each devoce
+in ConfigPtoto we can also give option as gpu_options.per_process_gpu_memory_fraction to mention the proportion of memeory it should grab.
+hpu_option.allow_growth is also an option but it is subjected torace conditions and memory grabbed is never released
+
+2. Pinning the operationmeans telling tf that this is where you want to run that operation. Some constraints that won't allow you:
+not having a kernel for that particular kind og device, but we can configure t to fall back on cpu soft placemnt. pinning is what youask tensorflow to put ht task placing is where tensorflow actually puts it
+
+3. SOft placement is when there is no gpu tf will fallback to cpu
+
+4. Ig we pin a variable at /gpu:0 ita can be used for operations placedon /gpu:1 Tf will automaticaly add the appropriate operations to transfer the variables value accross device
+
+5. Yes two operation ons ame device can run in paraller on different cpu or gpu threads as long as no operation depends on other operation output
+we can start multiple ssssions in parallel threads
+
+6. Control dependecieshelp you postpone evaluation of an operation X untl someother operation are run, even though these operations are not required to compute X, this is useful particularly when X would occupy a llot of memory and you only need it laterin the computational graph, and for saving bandwidth
+
+7. Variable values live in containers managed by clusters so even if we close the session and exit the client program the model parameters are still alive and well on cluster we need to open a session on th ecluster and save the model . Use saver to save the model
+
+Exercises to other willbe done as soon as i plagiarize from the ageron github. What a thing to say but I eill be back.
 
 
 
