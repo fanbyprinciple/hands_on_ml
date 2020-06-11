@@ -14,6 +14,8 @@ It is also possible toconnect to large input layer by spacing our receotive fiel
 ### Filters
 
 A neuron's weights can be represented as a samll image of size of receptive filed. There can be filters , fitrst one is a black square with vertical whiteline in the middle ( 7 * 7 matrix with 0s with onlyonw in middle), the subsequent layer will igonre everytnif but tbe 1s
+![](vertical_filter.png)
+![](horizontal_filter.png)
 
 
 ### Stacking multiple Feature maps
@@ -42,6 +44,8 @@ rducing mini batch size can reduce memory needed, also dimensionality of strides
 Their goal is to subsample (i.e. shrink) the input image in order to reduce the computational load, the memry usage the number of parameters (Therby limiting overfitting) Reducing the input image size also makes the neural network tolerate a little bit of image shift (location invariance)
 
 Like in convolutional layers each neuron in a pooling layer connected to the outputs of a limited number of neurons in the previous layer, located within a small rectangular receptive field We must define its size padding type and stride, however a pooling neuron has not weights it just aggregation function like max or mean.
+
+![](maxpool.png)
 
 ## CNN Architectures
 
