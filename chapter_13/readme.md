@@ -125,8 +125,14 @@ ResNets deeper than that such as ResNet-152 use slightly different residual unit
 2. A CNN of 3 x 3 kernels, a stride of 2, SAME padding. The lowest layer outputs 100 feature maps, middle one 200 and te top outputs 400. input images of 200x300 pixels.
 
 What is the total number of parameters?
+3x3 kernels inputs channel has rgb so 3x3x3 plus a bias term, thats 28 parameters per feature map, since it has 100 feature map, 2800 parameters
+Second convolutional layer has 3x3 kernels and its input is the set of 100 feature maps of the previous layer, so eachfeature map has 3x3x100 = 900 weights plus a bias term , since middle has 200 so 901 x 200 = 180,200 parameters, finally the last layer has 3x3 kernels and input is a set of 200 feature map, since it has 400 feature maps the layer a total of 1801 x 400 = 720,400 parameters all in alll the CNN has 2800 + 180200 + 720400 = 903400 parameters
+
 with 32 bt floats what is the memory of RAM ?
+if we are using a stride of 2 with SAME padding, the horizontal and the vertical  size of the feature map is devided by 2 at each layer, the input channels are 200x300 picels the first layer feature map would be 100x150, second layer 50x75, third layer 25x38. Since 32 bits is 4 bytes and the first convolutional layer has 100 feature maps this layer takes up 4 x100 x 100 x150 = 6 million bytes(5.7 MB) second will take 4 x 200 x50 x75  = 3 million (2.9 MB) and third layer takes up 3 x 25 x 38 x 400 = 1.4 MB, so total beign 14.3 MB, and adding the memoryby CNN parameters 3,623,600 bytes(3.4 MB) the total ram required being about 17.8 MB
+
 how about minim batch of 50 images?
+on a mini batch of 50 images , so the ram required would would be 10 MB x 50 = 500 MB , RAM for input images = 50 X4 x200 x 300 x3  = 34.3 MB and 3.4 for model paramerters it comes out to be 537.7 MB (very optimistic bare minimum)
 
 3. If GPU runs our then there are five things you can try to solve the problem:
     1. Reduce the mini-batch size
@@ -136,6 +142,10 @@ how about minim batch of 50 images?
     5. Distribute the CNN accross multple devices
 
 4. maxipooling has no parameters at all
+5. A local respones normalisation layer makes the neuron  taht most strongle activate inhibit neurons at the same location but in neighbhoring feature maps which encourages different feature maps to specialize and pushes them apart forcing themto explre a wider range of features
+
+6. The main nnovation of Alexnet compared ot Lenet are its much larger and deepser and it stack convolutional layer directly on top of each other without a stacking pooling layer on top of each convolutionallayer the main innovation of GoogLeNet is the introduction of inception modules whcih make it possible ot have a much deeper net than precious CNN architectires with fewer parameters , Finally resnet main innovation is the skip connection which made it possible to go well beyond the 100 layers, Arguably its simplicity and consistency are very innovative.
+
 
 
 
