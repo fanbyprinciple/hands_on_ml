@@ -146,6 +146,16 @@ on a mini batch of 50 images , so the ram required would would be 10 MB x 50 = 5
 
 6. The main nnovation of Alexnet compared ot Lenet are its much larger and deepser and it stack convolutional layer directly on top of each other without a stacking pooling layer on top of each convolutionallayer the main innovation of GoogLeNet is the introduction of inception modules whcih make it possible ot have a much deeper net than precious CNN architectires with fewer parameters , Finally resnet main innovation is the skip connection which made it possible to go well beyond the 100 layers, Arguably its simplicity and consistency are very innovative.
 
+8. Using inception v3
+
+1. On this pooer animal, known as fasso:
+![](fasso.png)
+
+    with disastrous results:
+   ![](fasso_result.png)
+
+2. On flower dataset:
+![](flowers.png)
 
 
 
