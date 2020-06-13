@@ -154,8 +154,20 @@ on a mini batch of 50 images , so the ram required would would be 10 MB x 50 = 5
     with disastrous results:
    ![](fasso_result.png)
 
-2. On flower dataset:
+2. On flower dataset: 
 ![](flowers.png)
+
+ Creating a training set:
+ ![](train_flower.jpg)
+ 
+ Creating a testing set:
+ ![](test_flower.jpg)
+ 
+ Accuracy as good as random:
+ ![](random.png)
+ 
+ 3. Something to follow:
+ https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/examples/tutorials/deepdream/deepdream.ipynb
 
 
 

@@ -1,2 +1,3 @@
-datasets
-images
+datasets/
+images/
+my_flowers_model.data-00000-of-00001
