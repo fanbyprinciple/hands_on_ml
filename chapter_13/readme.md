@@ -168,6 +168,21 @@ on a mini batch of 50 images , so the ram required would would be 10 MB x 50 = 5
  
  3. Something to follow:
  https://github.com/tensorflow/tensorflow/blob/r0.10/tensorflow/examples/tutorials/deepdream/deepdream.ipynb
+ 
+ Flower features :
+ ![](deep_flowers.png)
+ 
+ Laplacian flowers:
+ ![](laplacian_flower.png)
+ 
+ Other deep dreams:
+ ![](house1.png)
+ 
+ ![](striated_pattern.png)
+ 
+ ![](pattern.png)
+ 
+ 
 
 
 
