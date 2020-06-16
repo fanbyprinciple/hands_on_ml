@@ -40,6 +40,36 @@ Conversely we can feed the network a single input at first time step ans let it 
 
 We also can have a sequence to vector network called an encoder followed a vector to sequence network called a decoder.this is used for tanslation of one network to another. Works much better to translate on the fly.
 
-### Basic RNNs in TensorFlow
+## Basic RNNs in TensorFlow
+
+Basic rnns are defined using tf.nn.rnn.BasicRNNCell() in tensorflow followed by a static_rnn() or a dynamic_rnn() call to create the cells.
+
+In static_rnn() is basically writing one function multiple times through time steps creating a very large graph, which is suspectible to out of memory errors its better that we use dynamic_rnn()uses a while_loop() operatin to ru over the cell the appropriate number of times and you can set sqap_memory=True if you want to swap the GPU memory to CPU memeory during backpropagation to avoid OOM errors
+
+Also in dynamic rnn there is no need to stack unstack and transpose
+so its much better than staic_rnn().
+
+### Using variable length input sequences
+
+when we are not aware of sequence length (like in case of sentences) we put sequence_length as a parameter when we define dynamic_rnn()
+
+If one of the inputs doesnt have requisite values then it is padded and also in states val this padded zero step is excluded
+
+### Handling the variable length output Sequences
+
+This is done ussially through End of Sequence tokens
+
+### Training a RNN 
+
+Training is done by backpropagation just liek we do normally however but under the hood the technique used is BPTT (Backpropagation through time)
+
+The gradients flow based on cost function use in the evaluation of cost. There is some ambiugity on how exactly the cost function is calculated.
+
+Using on MNISt dataset
+![](mnist_acc.png)
+
+
+
+
 
 
