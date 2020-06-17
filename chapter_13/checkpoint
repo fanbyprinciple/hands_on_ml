@@ -1,2 +1,2 @@
-model_checkpoint_path: "my_flowers_model"
-all_model_checkpoint_paths: "my_flowers_model"
+model_checkpoint_path: "new_mnist_model"
+all_model_checkpoint_paths: "new_mnist_model"
