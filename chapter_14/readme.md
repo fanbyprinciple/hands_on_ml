@@ -68,6 +68,47 @@ The gradients flow based on cost function use in the evaluation of cost. There i
 Using on MNISt dataset
 ![](mnist_acc.png)
 
+We can specify an initializer for the RNN by wrapping its construction code in a variable scope (egs variable_scope("rnn", intializer=variance_scaling_initializer(), to use He initialisation))
+
+## Predicting time series
+
+A time series is a randomly selected sequence of 20 consecutive values from the time series and the target sequence is the same as the input sequence exceptit is shifted one step into the future.
+
+Example are stockprices, air temprature and brain wave patterns.
+![](sin_time_series.png)
+
+using this series for predictions by creatinga  RNN, this RNN conatins 100 recurrent neurons and we willunroll it over 20 time steps since each trainng instance will be 20 inputs long.
+
+The target is also sequences of 20 outputs each containing a single value.
+
+generally there are more than one input feature.
+
+At each time step now we have an output vector of size 100. But what we actually want is a single output value at each time step
+
+This can be done in two ways 
+
+1. wrapping with a output projection wrapper: it acts like a normal cell, but it also adds some functionality. It adds a fully connected layer of linear neurons (i.e. without any activation function) on top of each output (but it does not affect the cell state) it adds afully connected layer of neurons that is without any actucation function on top of each output (but it does not affect the cell state)
+![](output_projection_wrapper.png)
+
+2. We can also jsut simpleadd a fuly connected layer on topmanually.
+This is trickier but more efificient solution
+We can reshape the RNN outputs from [batch_size, n_steps,n_neurons] 
+
+to [batch_size * n_steps, n_neurons]then apply a single fully connected layer, with the approporiate output size . Which wil result in a tensor of shape batch_size * n_steps, n_outputs. Then reshape this tensor to batch_size, n_steps and n_outputs
+
+![](output_unstacking.png)
+
+### Creative RNN
+
+We have amodel that can predict the future, we can use it to generate some creative sequences. All we need is to provide it a seed sequence containing n_steps values (eg fill og zeros) and then use to poroduce the next value
+
+given a randomly initialised wave form:
+![](creative_input.png)
+
+the further generated iteration:
+![](creative_output.png)
+
+
 
 
 
