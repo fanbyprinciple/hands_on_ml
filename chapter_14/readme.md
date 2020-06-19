@@ -108,6 +108,13 @@ given a randomly initialised wave form:
 the further generated iteration:
 ![](creative_output.png)
 
+### Using dropouts
+
+![](dropout_test.png)
+
+### LSTM
+
+![](lstm_acc.png)
 
 
 
