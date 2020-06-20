@@ -173,6 +173,8 @@ We represent each word with samll and dense vector (150 vector) embedding, At be
 
 ![](vocabulary_building.png)
 
+Word embeddings after tsne
+![](tsne_word_embeddings.png)
 
 
 
