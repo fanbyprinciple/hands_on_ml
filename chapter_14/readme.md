@@ -108,13 +108,74 @@ given a randomly initialised wave form:
 the further generated iteration:
 ![](creative_output.png)
 
+### using differnet GPUs
+
+The only way to achive taht is to use u=your own cell wrapper
+
 ### Using dropouts
+
+If we want to apply dropout between the RNN layers then we need to use a DropoutWrapper. The following code applies dropout to the inputs of each layer in the RNN, dropping each input with a 50 percent probability.
 
 ![](dropout_test.png)
 
+
+### The difficulty of training over many time steps
+
+To train an ENN on long sequences , we will need to run it over many time stwps making the unrolled RNN a very deep network, and it will suffer frim vanishing / exploding gradients problem.  Training would e slow even with the normal techniques like good parameter initialisation, non saturating activation functions, batch normalisation, gradient clipping and faster optimizers
+
+The simplest solution is to unrll the RNN over a limited number of time steps. Thisis called truncated backpropagation through time.
+
+Another problem is that memory slowly fades away. Of the first cell.
+That is why LSTM is proposed.
+
 ### LSTM
 
+LSTM intensorflow is used by simple BasicLSTMCell insteadof BAsic RNN cell.
+
+        LSTM is composed of two states short term state h(t) and c(t) the long term state. c(t-1)when it traverses the network from left to right it goes through a forget gate, and then adds somenew memory by addition then c(t) is sent straight out. after Addition operation the long term state is copied and passed thorugh tanh function and the result filtered by output gate.This produces short term state h(t). (Which sequalto cells output forthis time step y(t))
+
+        Where new memories come from and how the gates work.
+
+        First the current input vector xt and previous shotterm state is fed into four different fully connected layer
+
+        1. The maun layer outputs gt. It has the usual role of analysing the currrent xt and previous ht-1 , in basic cell the output goes right outside however in LSTM it is partially stored in the long term state
+
+        2. The three other layers are gate controller. Since theyuse the logistic activation function their outputs range form 0 to 1, 
+
+        it has a forget gate - controlling which long term must be erased
+
+        It has a input gater wich control weich parts of gt should be added to the long term stater the thing that was partially stored.
+        and finaaly the output gate which controls parts of long term states to be read andoutput at this time step (bith ht) and yt
+
+LSTM cell can to recognise and important input store it in longterm state and learn to preserve it as long as it is needed. And learn to extract it when required.
+
 ![](lstm_acc.png)
+
+Peephole connections - it a basic LSTM cell the gate controllers can look only at the input xt and theprevious short term state ht-1 . It may be a good idea to let them take a peek so as to speak at the long term memory as well, its called peeholeconnections, the previous long term ct-1 is added as aninput to the connections of forget gate and the input gate.
+
+Thereare many variants of LSTM one of which is GRU. It is simplified but performs equally well.
+
+1. both state vectors are merged, one gate controller controls bith forget gate and input gate. If gate controller outputs a 1, input gate is opern and forget gater is closed.if 0 then opens.
+
+2. Ther is no output gate the fill state vector is output at every step time step. HOwever the gate controller determines which part of previous stat will beshown to the main layer
+
+### Natural Language processing
+
+We look at old nemesis word embeddings 
+
+Word embeddings 
+
+How to represent them, one way is one hot encoding which is not only inefficient but also doesnt give any meaningful information
+
+Ideally we want similar words to have similar representation, which makes it easier for model to generalize what it learns about a word to all similar words. so that it associates drink and water than drink and shoes.
+
+We represent each word with samll and dense vector (150 vector) embedding, At begining of training embedding for each word is chosen randomly, but as training progresses back prpogation automaitcally moves the embedding in such a way that helpsneural network perform its task. Typically this means that similar words willcluster towards each other, and even end up in organised manner in a meaning full way.
+
+![](vocabulary_building.png)
+
+
+
+
 
 
 
