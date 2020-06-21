@@ -176,6 +176,86 @@ We represent each word with samll and dense vector (150 vector) embedding, At be
 Word embeddings after tsne
 ![](tsne_word_embeddings.png)
 
+### Creating a decoder
+
+For creating english to french translation encoder decoder model, The decoder while training is also given the french word a ttime of lookup.
+
+starts at <go> token and ends at <eos> token.
+
+The english sentences are reversed before they are fed into the encoder
+So that beginning i the last thing in encoder, as it is the first thing machine needs to translate.
+
+Each word is initialy represented by a simple integer identifier (eg 288 for milk). Next an embedding lookup returns the word embedding, these word embeddins are what is actually fed to the encoder and decoder
+
+At each step decoder output a score for eacj word in output vocab and then the softmax layerturns these scores into probabilities. 
+
+Note that at inference time (after training), you will not have the target sentence to
+feed to the decoder. Instead, simply feed the decoder the word that it outputs.
+
+Important things to keep in mind 
+1. dynamic length of sentences
+2. using sampoling technique toc create a smaller output feature set
+3. An attention mechanism that lets decoder peek into input sequence
+4. How to train it
+
+
+# Exercises
+
+1. Applications of RNN
+    sequence to sequence:
+    predicting the weather (or any other time series)
+    machine translation (encoder decoder)
+    video captioning 
+    speech to text
+    music generation (or any other sequence generation)
+    idenitiying chords of a song
+    
+    sequecne to vector:
+    music genre classification
+    analysing the sentiment of a book review
+    predicting what worda patien t is thing of based on reading from brain implant
+    predicting probability that user will want to watch  amoviebased on watch history (collaborative filtering)
+    
+    vector to sequence:
+    image captioning
+    creatinga music playlist
+    generatinga melody based on parameters
+    locating pedestrians in a picture (in self driving car)
+    
+2. If translate a sentence one word at a time the resultwill be terruble
+A plain seuqnce to sequence RNN wont do
+
+3. To classify vide we take one frame per sec then run each frame through a CNN  feed the output to a rnn and run output to softmax layer  giving you the class probabilities. For training we would use cross entropy of the function
+we can use this for audio classification as well you could convert every second of audio to a spectrograph feed this to a cnn and feed the output of a CNN to a RNN
+
+4. Building a RNN using dynamic_rnn() over static has many benefirs
+based on while_loop() operationt hat is able to sqp the GPU memort ro CPU memeory during backpropagation acoiding the out of memory errors. 
+Easier to use
+generatessmaller graph
+
+5. To handle dynamic length of inputs we set  sequence length parameter
+we can pad the inputsif not aware of the max length
+
+6. To distribute the GPU over multiple GPU a common technique is to place each ayer in a different GPU
+
+7. Reber grammar
+
+In this we are trying to make a machien that can make reber grammar:
+![](reber_grammar_image.png)
+
+Reber grammar: 
+![](test_reber.png)
+
+### Things to do
+
+findout 
+1. how mnist works
+2. how word embedding works
+3. implement french translater
+4. Know how the encoder of reber grammar works
+
+
+
 
 
 
