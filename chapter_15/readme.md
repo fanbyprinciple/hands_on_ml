@@ -21,8 +21,33 @@ Because internal representationhas a lower dimensionality than th einput data ( 
 
 ### simple PCA using autoencoder
 
+If the autoencoder uses only linear activations and the cost function is the Mean Squared Error (MSE) then it can be shown that it ends up performing PCA
+![](input_pca.png)
+
+After autoencoder:
 ![](pca.png)
 
-### deconstruction using auto encoder
+### reconstruction using auto encoder , stacked autencoder
+
+Also called deep autoencoders, adding more layer hep it develop more complex codings. We should not make autoencoder too powerful otherwise it will create a paerfect copy of input data.
+
+Foe example for mnist it would need input and output equal to 784 units while there can be 3 hidden layers
 
 ![](reconstruction.png)
+
+### Tying the weights
+
+We can tie the weights if the autoencoder is perfectly symmetrical, This halves th enimber of wights speeeding the training and limiting the risk of overfitting
+![](tying_weights.png)
+
+### Training One Autoencoder at a time
+
+It is faster to train one shallow encoder at a time and then stack all using a single autoencoder
+
+Simplest approach being using different tesnorflow graph:
+![](tf_different_graph.png)
+
+Another approach is to use a single graphcontaining the whole stacked autoencoder, plus some extra operations
+
+![](tf_single_graph.png)
+
