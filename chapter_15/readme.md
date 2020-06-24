@@ -98,4 +98,49 @@ Once we have the mean activation per neuron,we want to penalize the neurons that
 
 ![](sparsity_graph.png)
 
+once we get the saprsity liss for each neuron in the coding layer, we just sum up theselosses and add the result to the cost function. In order to control the relative importance of sparsity loss and reconstruction loss we can multiply sparsity loss by a sparsity weight hyperparameter. 
+
+If weight is too high then model will stick closely to the target sparsity, it may not reconstruct the inputs properly, making the model useless. If its too low, the model will mostly ignore and not learn any useful features
+
+![](sparse_output.png)
+
+## Variational Autoencoders
+
+These are probabilistic autoencoders : outputs are partially determined by chance even after training (as opposed to denoising autoencoders, which use randomness only during training.)
+
+Most importantly they are generative autoencoders meaning that htey can generate new instances that look loke they were sampled from training set.
+
+But they are easier to train the sampling process similar to RBMs. Restricted boltzman machines , in which we need to wait for the network to stabilize into a thermal equilibrium before we can sample a new instance.
+
+we actaully add gaussian noise in beterrm
+the mean coding _mu_ and the standard devaition _sigma_ are sampled with gaussian noise
+
+As we can see although the inputs may have a very convoluted distribution a variational autoencoder tends to produce codings from gaissian noise. One great consequence is that after a varaitional autoencoder, you can easily generate a new instance
+
+Lets lookat cost function. It has two parts the first is the usual reconstruction loss that pushes the autoencoder to reporduce its inputs , the second is the latent lossthat pushes the autoencode to have codings as if they were sampled a simple gaussian distribution for which we will use the KL divergence between the targets and the actual distribtion of the codings, The math is a bit more complex. 
+
+![](variational_autoencoder.png)
+
+The encoding and decoding through a variational autoencoder:
+
+![](encode_decode.png)
+
+The interpolation of digits
+
+![](interpolation.png)
+
+## other examples of autoencoders
+
+1. contractive autoencoder(CAE)
+2. stacked convolutional autoencoder - for extracting visual features
+3. Generative stochastic network - genralisation of denoising autoencoders
+4. Winner take all autoencoder - naturally leads to sparse codings
+5. Adverserial autoencoder -  network trained to reproduce its intpust with an adverserial network
+
+## Exercises 
+
+to be done.
+
+
+
 
