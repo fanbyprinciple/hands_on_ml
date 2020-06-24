@@ -86,9 +86,16 @@ In implementation we just reuse the encoder layer ti create a new neural network
 
 We can make output even bigger than input it is called an overcomplete autoencoder. Denoising is a way to force autoencoders to add noise in inputs , traiing it to recover the original noise free inputs. This prevents from just copy pasting and having to find patterns for autoencoder.
 
+We can also use dropout along with the noise to make the autoencoder.
+![](denoising.png)
 
 
-### Unsupervised Training
+### Sparse Autoencoders
 
+If we reduce the active number of neurons then we force the neurons to be a cumulative of multiple neurons, We need to find the sparsity of each layer at coding iteration.
+
+Once we have the mean activation per neuron,we want to penalize the neurons that are too active by adding sparsity loss to the cost function, activation should be more than the targer sparcity, in order to do it we use the KL divergence or Kullback-Leibler divergence, which has much stronger gradient.
+
+![](sparsity_graph.png)
 
 
