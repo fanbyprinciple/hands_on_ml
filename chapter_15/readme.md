@@ -139,7 +139,36 @@ The interpolation of digits
 
 ## Exercises 
 
-to be done.
+1. Autoencoder are used for 
+    1. feature extraction
+    2. unsupervised training
+    3. dimensionally reduction
+    4. generative models
+    5. anomaly detection (an autoencoder is generally bad at reconstructing outliers)
+    
+2. If we have plenty of unlabelleddata then we canfirst train a deep autoncoder on the full dataset (labeled + unalbelled) then reuse the lower half og classifier (that is uptil the codinglayer and then train using the labelled data. If we have labeled data, we want to freeze the reused layers when training the classifier
+
+3. If autoencoder perfectly constructs its inputs then it does not mean it is a good autoencoder, perhaps it is simply an overcompletet autoencoder that learned to copy its inputs layers to the coding layer then to outputs. In fact even coding layer contained a single neuron it would be possible for a very deep autoencoder to learn to map each training instance to a different coding. 
+
+Perfect autoencoders dont learn anyuseful features
+however bad reconstructions do mean bad autoencoder
+To evaluate the performance ofan autoencoder one option is tomeasure its recontruction loss, calculate MSE , mean square of outputs minus the inputs, if you are using anautoencoder for a particular thing, then evaluate acccordingly, eg classifier performance.
+
+4. An undercompleteautoencoder isonewhoe coding layer is smaller tan the input and output layers. If its larger then its overcomplete
+
+5. To tie weight of decoder and encoder we make decoder weights a transpose of encoder weights, thia reduces the number of parameters by half
+
+6. TO visualise the features by the lower layer of a stacked autoencoder , a commontechniquw i to simply plot the weights of each neuronby reshaping each each weight vector to the size of an input image (eg MNIST, reshaping a weight vector of shape [784] to [28,28].To visualize the features learned by higher layers one technique is to display the traiing instnace that most activate each neuron.
+
+7. a generative model is a model capable of randomly generating outputs that resemble the trsining instances , for exmple once trained successfully onthe mnsit dataseta generative model can be used to randomly generate realistic image of the digits, the distribution being the same as the input distribution.An example of generative autoencoder is the variational autoencoder.
+
+# to do
+
+8. Building a CIFAR 10 image classifier using denoising autoencoder
+
+9. semantic hashing: we can retireive documents that are similar 
+
+10. Using cifardataset to construct images
 
 
 
