@@ -19,7 +19,7 @@ Finding a suitable policy is called policy search. Another way to explore the po
 
 Another approach is through using optimization techniques by evaluating the gradients of the rewards with regards to policy parameters, then tweakingthese parameters by following the gradien towards higher rewards(gradient ascent). This approach is also called policy gradients (PG) 
 
-### Open ai gym
+## Open ai gym
 
 Toolkitwith 2D and 3D simulations.
 
@@ -27,3 +27,10 @@ Toolkitwith 2D and 3D simulations.
 
 Working way to represent pacman on jupyter:
 ![](pacman.png)
+
+### hard coded cartpole policy
+
+![](hard_coded.gif)
+
+### using nn
+![](short_failed_nn.gif)
