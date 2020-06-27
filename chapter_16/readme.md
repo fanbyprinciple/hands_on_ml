@@ -30,7 +30,18 @@ Working way to represent pacman on jupyter:
 
 ### hard coded cartpole policy
 
+env.action_space -> gives you the number of possible actions
+env.step returns 4 values
+obs - gives you four values , angle, angular velocity, velocity and position
+reward - in environment , you get a reward of 1.0 at every step, mor matter what
+done - returned when episode is over
+
+This never managed to keep the pole upright.
+
+
 ![](hard_coded.gif)
 
 ### using nn
+
+
 ![](short_failed_nn.gif)
