@@ -150,6 +150,48 @@ for discount rate of 0.9
 for dicount rate of 0.1
 ![](discount_1.png)
 
+### Temporal difference learing and Q learning
+
+Temporal difference learning problems with discrete actions can often be modeled as markov decision processes but the agen initaliiy has no idea what the transition probabilities are and does not knwo rewards either. It must experience each transition at least once to know the rewards 
+
+IN temporal differenece learning algoithm, it is similar to value iteration algorithm but it is tweaked to take into account the fact that the agent has only partial knowledge about MDP, The agent uses an exploration policy and as it progresses it updates the estimates of the state values
+
+`V(k+1) <- (1-alpha) * V(k)(s) + alpha(r + gamma* V (k) (s')`
+where alpha is the learning rate
+
+For each state s this algorithm simply eeps track of a running averae of immediate rewards the agent gets upon leaving that sttae, plus the rewards it expects to get later 
+
+similarly q learning algorithm is an adaptation of Q value iteration algorithm
+where rewards aand transition probabilities are not known
+
+`Q(k+1)(s,a) <- (1-alpha)Q(k)(s,a) + alpha(r + gamma * max (Q(k) *(s'a'))`
+where state action pair is (s,a) and this algorithm keeps track of a running avergae og the rewards e the agent gets aupon leaving the state s with action a , plus the rewards it expects to get later
+
+![](simple_q_learning.png)
+
+## Exploration Policies
+
+Q learning can work only if the exploration policy explores the MDP throughly enough, Although a purely random policy is guaranteed to eventually visit every state and every transition many times, it may take extremely long time to do so, therefore we use the phi-greedy policy at each step it acts with probability pphi or greedily with probability 1- phi. The advantage of the phi-greedy policy is that it will spend more and more time eploring the interesting parts of the environemnt as the Q value estimates get betterand better, while still spendig some time visiting unknown regions of the MDP, it quite common to start with value as 1 and then gradually reducing it to 0.05
+
+Alternatively instead of relying on chance for exploration, we can try action that are not tried much before, this is added as a bonus to the q value estimates
+
+`Q(s,a) <- (1- alpha) Q (s,a) + alpha(r + gamma * max(f(Q(s'a'), N(s',a')))`
+
+N(s',a')  counts the numer of time the action a' was chosen in state s'
+f(q,n) is an exploration function such as f(q,n) = q + K/(1+n) where K is a curiosity hyperparameter that measure how much the agent is attracted to the unknown
+
+## Approximate Q-Learning
+
+The main problem is that Q learning doesnot scale weell to large or even medium MDPs with many states and actions, as in the case with pacman, the solution is to use a managemble number of paramters also known as approximate Q learning, for years it was recommended to use linear combinations of hand crafted features extracted from stsae, but now we know that we ca use Deep Q networks to solve the problem
+
+# Using DQN toplay Ms. Pac-Man
+
+
+
+
+
+
+
 
 
 
