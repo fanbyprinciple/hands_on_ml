@@ -186,6 +186,18 @@ The main problem is that Q learning doesnot scale weell to large or even medium 
 
 # Using DQN toplay Ms. Pac-Man
 
+A dqn would just take a state action pair as the input and output an estimate of the corresponding Q value Q(s,a) but the actions are discrete it is more convenient to use a neural network that takes only a state as input and outputs one Q value estimate per action, The DQN will be composed of three convolutional layers followed by two fully connected layers
+
+we are using two network both use the function q_network() to build themselves.
+
+
+
+After 9895 training steps:
+![](step_9895_pacman.gif)
+
+Even after 80271 steps still pretty stupid:
+![](step_80271_pacman.gif)
+
 
 
 
