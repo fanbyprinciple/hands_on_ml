@@ -190,6 +190,13 @@ A dqn would just take a state action pair as the input and output an estimate of
 
 we are using two network both use the function q_network() to build themselves.
 
+The actor DQN can be used to play PAC-man initially very badly. we want to combine it witha sigma geedy policy.
+
+Critic DQN  will try to match the Q value predictions with the Q values estimated by the actor through its experience in the gmae. More specifically we let the actor play for a while storing all its experiences of the game. specifically we let the actor play for a while , storing all its experiences in a replay memory. Each memory will be a 5-tuple (state, aciton, next state, reward,continue_ where continue will be 0 when the game is over otherwise 1.0 
+
+At every intervalwe will sample a batch of memories from the replay memory and we will estimate Q values from the memory, then we will train the critic DQN to predcit the Q -values using regular supervised techniques, once everyfew training instances the critic DQN is transferred to the actor DQN.
+
+Replay memory is useful because without it tit would be using consecutive memories which is vey correlated.
 
 
 After 9895 training steps:
@@ -199,7 +206,45 @@ Even after 80271 steps still pretty stupid:
 ![](step_80271_pacman.gif)
 
 
+## Atari breakout preprocessing
 
+Ways to get the information that you dont get from a single image, where we have no information about the speed and direction which is important for training an atari game.
+
+![](atari_simple.png)
+
+WE can create a multichanel image or a singlechannelimage with dimmed parameters
+![](atari_preprocessed.png)
+
+
+# Exercises
+
+1. Reinforment learning is aimed at creating agents capable of taking actions in an environment in a way that maximises the rewards over time
+
+    a. in supervised and unsupervised leaarning the goal is generally to find patterns in data. In reinforcement learning the goal is to find a good policy
+    
+    b. it must learn by trial and error
+    
+    c. unlike in unsupervsed learning ther is a form of supervision through rewards
+    d. A reinforcement Learning agent needs to find the right balance between exploring the environemnt and looking at new ways of getting rewards
+    e. In supervised and unsupervised learning training instances are typically independent. However that is not the case in reinforcement
+    
+2. Possible applications of reinforcement learning
+
+Music personalization: the environment is a users personalized web radio. The agent is the software deciding waht song to play next for that user. It is possible actions are to play any song in the catalog, get a reward when user listens to song a larger reward when it listents to add and negative reward when user leaver
+
+Marketik : The agent is the software that defines which customers a mailing campaign must be sent to given their profile and purchase history gets a positive reward for revenue generated and a negative reward for expenditure
+
+Product delivery: Let the agent control a fleet of delivery trucks deciding what they should pick up at depots where they should go what they should drop off and so on, they would get positive rewards for each product delivered on time and negative rewards for late deliveries
+
+3. When estimating the value of an action rl algorithms typically sum all the rewards that this action led to, giving more weght to immediate rewards and less weights to later rewards, to model this a discount factor is generally applied for each time step. Discount rate is a measure of how much the fure is valued in the time step. If we value the future then we must put up wiht a lot of present pain
+
+4. To measure the performance of a rl agent you can simply sum up the rewards it gets. In a simulated environemnt , you can run many episodes and look at the total rewards it gets on average (possibily look a t min, max , standard deviation and so on)
+
+5. The credit assignment problem is the fact that when a Reinforcement Learning agent recies a reward it has no direct way whih of its previous actions contributed to this reward. It typically occurs when there is a large delay  in action and resulting rewards, one way to provide the age with shorter term rewards when possible. Requires prior knowledge of the task. for example we could give it a rewards only when it wins the game and also when it captures one of the opponents pieces
+
+6. An agent can often remain in teh same region of tits environment for a whileso all of its experiences canbe very similar .This can introduce some bias in learning algorithm. It may tune its policy for tis regiom, to solve this we can use replay memory instead of using the most immediate experiences for learning the agent will learn based on a buffer of its pastexperiences.
+
+7. An off policy RL algorithm leans the value of of optimal  policy that is the sum of disconed rewards that can be expected for each state if the agent acts optimally, independent of how the agent acts. Q learning is a goof example, in contrast an on polcy algorith, an on polcy ilearns the vlaue of of the policy that the agent actually executes, including exploration and exploitation.
 
 
 
