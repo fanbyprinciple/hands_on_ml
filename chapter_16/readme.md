@@ -215,6 +215,9 @@ Ways to get the information that you dont get from a single image, where we have
 WE can create a multichanel image or a singlechannelimage with dimmed parameters
 ![](atari_preprocessed.png)
 
+### TO DO
+use the replay memory used in pong for breakout.
+
 
 # Exercises
 
